@@ -648,6 +648,126 @@
             margin-right: 8px;
         }
         
+        /* Image Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px rgba(196, 30, 58, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: var(--text);
+            font-size: 50px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10000;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--text);
+            padding: 20px 40px;
+            background: rgba(15, 10, 10, 0.9);
+            border: var(--border);
+            max-width: 80%;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .modal-caption p {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text);
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            background: rgba(196, 30, 58, 0.9);
+            padding: 10px 25px;
+            border: var(--border);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(196, 30, 58, 0.9);
+            color: var(--text);
+            border: var(--border);
+            padding: 20px 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            z-index: 10000;
+        }
+        
+        .modal-nav:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-prev {
+            left: 30px;
+        }
+        
+        .modal-next {
+            right: 30px;
+        }
+        
         .project-card {
             background-color: var(--card-bg);
             border-radius: 0;
@@ -1150,6 +1270,49 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .modal-close {
+                top: 20px;
+                right: 20px;
+                font-size: 40px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+
+            .modal-caption {
+                bottom: 80px;
+                padding: 15px 25px;
+                max-width: 90%;
+            }
+
+            .modal-caption h3 {
+                font-size: 1.4rem;
+            }
+
+            .modal-caption p {
+                font-size: 1rem;
+            }
+            
+            .modal-nav {
+                padding: 15px 12px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-prev {
+                left: 10px;
+            }
+            
+            .modal-next {
+                right: 10px;
+            }
+            
+            .modal-counter {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1650,9 +1813,48 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Project 8 -->
+                <div class="project-card" onclick="openProjectModal('lifespark')">
+                    <div class="project-img">
+                        <i class="fas fa-heartbeat" style="font-size: 4rem; color: var(--accent);"></i>
+                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(196, 30, 58, 0.9); color: white; padding: 8px 15px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.3);">
+                            <i class="fas fa-images"></i> View Photos
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Life Spark - Community Health Application</h3>
+                        <p>Physical prototype of a health application for Taman Tasik Seksyen 7, emphasizing the human connection between technology and community wellness needs through critical and creative problem-solving.</p>
+                        <div class="project-tags">
+                            <span class="tag">Prototype Design</span>
+                            <span class="tag">Community Health</span>
+                            <span class="tag">User Research</span>
+                            <span class="tag">Creative Thinking</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="javascript:void(0)" onclick="event.stopPropagation(); openProjectModal('lifespark')" class="project-link">
+                                <i class="fas fa-camera"></i> View Project Photos
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    
+    <!-- Project Image Modal -->
+    <div id="projectModal" class="modal" onclick="closeProjectModal(event)">
+        <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+        <button class="modal-nav modal-prev" onclick="changeProjectImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <img class="modal-content" id="projectModalImage">
+        <button class="modal-nav modal-next" onclick="changeProjectImage(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="modal-caption" id="projectModalCaption"></div>
+        <div class="modal-counter" id="projectModalCounter"></div>
+    </div>
 
     <div class="divider"></div>
 
@@ -2038,6 +2240,98 @@
         
         window.addEventListener('scroll', reveal);
         reveal(); // Initial check
+        
+        // Project Image Modal System
+        let currentProjectImages = [];
+        let currentImageIndex = 0;
+        
+        const projectImages = {
+            lifespark: [
+                {
+                    src: 'images/lifespark_1.jpg',
+                    title: 'Life Spark Prototype',
+                    description: 'Physical prototype design for community health application'
+                },
+                {
+                    src: 'images/lifespark_2.jpg',
+                    title: 'Life Spark Prototype',
+                    description: 'Detailed view of the application interface and features'
+                }
+            ]
+        };
+        
+        function openProjectModal(projectName) {
+            const modal = document.getElementById('projectModal');
+            currentProjectImages = projectImages[projectName] || [];
+            currentImageIndex = 0;
+            
+            if (currentProjectImages.length > 0) {
+                modal.style.display = 'flex';
+                showProjectImage(currentImageIndex);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeProjectModal(event) {
+            if (event && event.target.id !== 'projectModal') return;
+            
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function showProjectImage(index) {
+            if (currentProjectImages.length === 0) return;
+            
+            const img = document.getElementById('projectModalImage');
+            const caption = document.getElementById('projectModalCaption');
+            const counter = document.getElementById('projectModalCounter');
+            const prevBtn = document.querySelector('.modal-prev');
+            const nextBtn = document.querySelector('.modal-next');
+            
+            const imageData = currentProjectImages[index];
+            img.src = imageData.src;
+            caption.innerHTML = `<h3>${imageData.title}</h3><p>${imageData.description}</p>`;
+            counter.textContent = `${index + 1} / ${currentProjectImages.length}`;
+            
+            // Show/hide navigation buttons based on number of images
+            if (currentProjectImages.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+            }
+        }
+        
+        function changeProjectImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentProjectImages.length - 1;
+            } else if (currentImageIndex >= currentProjectImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            showProjectImage(currentImageIndex);
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('projectModal');
+            if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+                closeProjectModal({ target: { id: 'projectModal' } });
+            }
+            
+            // Navigate with arrow keys
+            if (modal && modal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    changeProjectImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeProjectImage(1);
+                }
+            }
+        });
     </script>
 </body>
 </html>
