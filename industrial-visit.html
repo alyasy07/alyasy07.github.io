@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Visit Gallery | Nur Syafika Alya Portfolio</title>
+    <meta name="description" content="Browse my industrial visit experiences featuring visits to Fiuu, Agmo Studios, and SULAM Program at Kampung Budiman.">
+    <meta name="keywords" content="Industrial Visit, Company Visit, Technology Companies, Field Trip, Professional Development">
+    <meta name="author" content="Nur Syafika Alya Binti Mohd Zamri Azhar">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;500;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c41e3a;
+            --primary-light: #e63946;
+            --primary-dark: #a01729;
+            --secondary: #d16a6a;
+            --accent: #e8b4b4;
+            --dark: #0f0a0a;
+            --dark-light: #1a1212;
+            --card-bg: #2a1f1f;
+            --text: #ffffff;
+            --text-dim: #e8d4d4;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --border: 1px solid rgba(196, 30, 58, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(26, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: var(--border);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .logo::after {
+            content: '❀';
+            color: var(--primary);
+            font-size: 1.5rem;
+            position: absolute;
+            top: -10px;
+            right: -25px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            color: var(--accent);
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        /* Main Section */
+        .visit-section {
+            padding: 150px 0 100px;
+            min-height: 100vh;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::before {
+            content: '✦';
+            color: var(--primary);
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+        }
+        
+        .section-title h1::after {
+            content: '✦';
+            color: var(--primary);
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+        }
+        
+        .section-title p {
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-family: 'Crimson Text', serif;
+        }
+        
+        /* Industrial Visit Gallery */
+        .visit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .visit-card {
+            position: relative;
+            background-color: var(--card-bg);
+            border-radius: 0;
+            overflow: hidden;
+            border: var(--border);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            height: 350px;
+        }
+        
+        .visit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .visit-img {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(34, 24, 24, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visit-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .visit-card:hover .visit-img img {
+            transform: scale(1.1);
+        }
+        
+        .visit-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 10, 10, 0.95), transparent);
+            padding: 25px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .visit-card:hover .visit-overlay {
+            transform: translateY(0);
+        }
+        
+        .visit-overlay h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        .visit-overlay p {
+            color: var(--text-dim);
+            font-family: 'Crimson Text', serif;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .view-visit {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .view-visit:hover {
+            color: var(--accent);
+        }
+        
+        .view-visit i {
+            margin-right: 8px;
+        }
+
+        /* Image Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            object-fit: contain;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px rgba(196, 30, 58, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: var(--text);
+            font-size: 50px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10000;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--text);
+            padding: 20px 40px;
+            background: rgba(15, 10, 10, 0.9);
+            border: var(--border);
+            max-width: 80%;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .modal-caption p {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h1::before,
+            .section-title h1::after {
+                display: none;
+            }
+            
+            .visit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-close {
+                top: 20px;
+                right: 20px;
+                font-size: 40px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+
+            .modal-caption {
+                bottom: 20px;
+                padding: 15px 25px;
+                max-width: 90%;
+            }
+
+            .modal-caption h3 {
+                font-size: 1.4rem;
+            }
+
+            .modal-caption p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text);
+            border: var(--border);
+            border-radius: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+        
+        .back-to-top.show {
+            display: flex;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 576px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Online<span>Portfolio</span></a>
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Main
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Industrial Visit Section -->
+    <section class="visit-section">
+        <div class="container">
+            <div class="section-title">
+                <h1>Industrial Visit Gallery</h1>
+                <p>Memorable experiences exploring the technology industry</p>
+            </div>
+            <div class="visit-grid">
+                <!-- Visit 1 - Fiuu -->
+                <div class="visit-card">
+                    <div class="visit-img">
+                        <img src="images/visit_fiuu_1.jpg" alt="Industrial Visit to Fiuu 1">
+                    </div>
+                    <div class="visit-overlay">
+                        <h4>Industrial Visit to Fiuu</h4>
+                        <p>Exploring fintech solutions and payment gateway technologies - 2024</p>
+                        <span class="view-visit"><i class="fas fa-expand"></i> Click to View</span>
+                    </div>
+                </div>
+                
+                <!-- Visit 2 - Fiuu -->
+                <div class="visit-card">
+                    <div class="visit-img">
+                        <img src="images/visit_fiuu_2.jpg" alt="Industrial Visit to Fiuu 2">
+                    </div>
+                    <div class="visit-overlay">
+                        <h4>Industrial Visit to Fiuu</h4>
+                        <p>Group photo and networking session with Fiuu team - 2024</p>
+                        <span class="view-visit"><i class="fas fa-expand"></i> Click to View</span>
+                    </div>
+                </div>
+                
+                <!-- Visit 3 - Agmo Studios -->
+                <div class="visit-card">
+                    <div class="visit-img">
+                        <img src="images/visit_agmo_1.jpg" alt="Industrial Visit to Agmo Studios 1">
+                    </div>
+                    <div class="visit-overlay">
+                        <h4>Industrial Visit to Agmo Studios</h4>
+                        <p>Learning about software development and project management - 2025</p>
+                        <span class="view-visit"><i class="fas fa-expand"></i> Click to View</span>
+                    </div>
+                </div>
+                
+                <!-- Visit 4 - Agmo Studios -->
+                <div class="visit-card">
+                    <div class="visit-img">
+                        <img src="images/visit_agmo_2.jpg" alt="Industrial Visit to Agmo Studios 2">
+                    </div>
+                    <div class="visit-overlay">
+                        <h4>Industrial Visit to Agmo Studios</h4>
+                        <p>Program and protocol committee activities - 2025</p>
+                        <span class="view-visit"><i class="fas fa-expand"></i> Click to View</span>
+                    </div>
+                </div>
+                
+                <!-- Visit 5 - SULAM Program -->
+                <div class="visit-card">
+                    <div class="visit-img">
+                        <img src="images/sulam_1.jpg" alt="SULAM Program at Kampung Budiman 1">
+                    </div>
+                    <div class="visit-overlay">
+                        <h4>SULAM Program</h4>
+                        <p>Community service at Kampung Budiman - 2025</p>
+                        <span class="view-visit"><i class="fas fa-expand"></i> Click to View</span>
+                    </div>
+                </div>
+                
+                <!-- Visit 6 - SULAM Program -->
+                <div class="visit-card">
+                    <div class="visit-img">
+                        <img src="images/sulam_2.jpg" alt="SULAM Program at Kampung Budiman 2">
+                    </div>
+                    <div class="visit-overlay">
+                        <h4>SULAM Program</h4>
+                        <p>Engaging with local community and social activities - 2025</p>
+                        <span class="view-visit"><i class="fas fa-expand"></i> Click to View</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Image Modal Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeBtn = document.querySelector('.modal-close');
+
+        // Add click event to all visit cards
+        document.querySelectorAll('.visit-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                const img = this.querySelector('.visit-img img');
+                const title = this.querySelector('.visit-overlay h4').textContent;
+                const description = this.querySelector('.visit-overlay p').textContent;
+                
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+                modalCaption.innerHTML = `<h3>${title}</h3><p>${description}</p>`;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal when clicking X
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.visit-card');
+        
+        const reveal = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        revealElements.forEach(element => {
+            element.classList.add('reveal');
+        });
+        
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+</html>
