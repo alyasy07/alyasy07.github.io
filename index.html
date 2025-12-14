@@ -42,6 +42,86 @@
             --rose-bg: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b0000' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
         
+        /* Light Mode Colors */
+        body.light-mode {
+            --primary: #c41e3a;
+            --primary-light: #e63946;
+            --primary-dark: #a01729;
+            --secondary: #d16a6a;
+            --accent: #c41e3a;
+            --dark: #fef6f6;
+            --dark-light: #fff0f0;
+            --card-bg: #ffffff;
+            --text: #2d1f1f;
+            --text-dim: #6d4e4e;
+            --shadow: 0 10px 30px rgba(196, 30, 58, 0.15);
+            --border: 1px solid rgba(196, 30, 58, 0.2);
+        }
+        
+        /* Theme Toggle Switch */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            transition: var(--transition);
+            border-radius: 34px;
+            border: 2px solid rgba(196, 30, 58, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "☾";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 2px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        input:checked + .slider {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        }
+        
+        input:checked + .slider:before {
+            content: "☀";
+            transform: translateX(26px);
+        }
+        
+        .slider:hover {
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -121,6 +201,12 @@
             z-index: 1000;
             border-bottom: var(--border);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        body.light-mode header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.15);
         }
         
         nav {
@@ -767,6 +853,52 @@
         .modal-next {
             right: 30px;
         }
+
+        /* Light Mode Modal Styles */
+        body.light-mode .modal {
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        body.light-mode .modal-content {
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px rgba(196, 30, 58, 0.3);
+        }
+
+        body.light-mode .modal-close {
+            color: var(--text);
+        }
+
+        body.light-mode .modal-close:hover {
+            color: var(--primary);
+        }
+
+        body.light-mode .modal-caption {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            color: var(--text);
+        }
+
+        body.light-mode .modal-caption h3 {
+            color: var(--primary);
+        }
+
+        body.light-mode .modal-caption p {
+            color: var(--text-dim);
+        }
+
+        body.light-mode .modal-counter {
+            background: rgba(196, 30, 58, 0.9);
+            color: #ffffff;
+        }
+
+        body.light-mode .modal-nav {
+            background: rgba(196, 30, 58, 0.9);
+            color: #ffffff;
+        }
+
+        body.light-mode .modal-nav:hover {
+            background: var(--primary);
+        }
         
         .project-card {
             background-color: var(--card-bg);
@@ -785,12 +917,16 @@
         
         .project-img {
             height: 220px;
-            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(34, 24, 24, 0.9));
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.15), rgba(228, 180, 180, 0.3));
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+        }
+        
+        body.light-mode .project-img {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(255, 240, 245, 0.8));
         }
         
         .project-img::before {
@@ -1434,6 +1570,12 @@
                     <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="theme-toggle">
+                    <label class="theme-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -2327,6 +2469,34 @@
                 } else if (e.key === 'ArrowRight') {
                     changeProjectImage(1);
                 }
+            }
+        });
+        
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-checkbox');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+                
+                // Add smooth transition effect
+                body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
+            } else {
+                body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+                
+                // Add smooth transition effect
+                body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
             }
         });
     </script>

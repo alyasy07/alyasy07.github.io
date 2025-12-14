@@ -26,6 +26,20 @@
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             --border: 1px solid rgba(196, 30, 58, 0.4);
         }
+
+        body.light-mode {
+            --dark: #fef6f6;
+            --dark-light: #fff0f0;
+            --card-bg: #ffffff;
+            --text: #2d1f1f;
+            --text-dim: #5d4d4d;
+            --shadow: 0 10px 30px rgba(196, 30, 58, 0.15);
+            --border: 1px solid rgba(196, 30, 58, 0.2);
+        }
+
+        body.light-mode header {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
         
         * {
             margin: 0;
@@ -110,6 +124,70 @@
         
         .back-link i {
             margin-right: 8px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            transition: var(--transition);
+            border-radius: 34px;
+            border: 2px solid rgba(196, 30, 58, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "☾";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 2px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        input:checked + .slider {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        }
+        
+        input:checked + .slider:before {
+            content: "☀";
+            transform: translateX(26px);
+        }
+        
+        .slider:hover {
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
         }
         
         /* Main Section */
@@ -432,9 +510,17 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">Alya's<span>Portfolio</span></a>
-                <a href="index.html" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Back to Main
-                </a>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Main
+                    </a>
+                    <div class="theme-toggle">
+                        <label class="theme-switch" for="theme-checkbox">
+                            <input type="checkbox" id="theme-checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -616,6 +702,27 @@
         
         window.addEventListener('scroll', reveal);
         reveal();
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-checkbox');
+        const body = document.body;
+
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
     </script>
 </body>
 </html>
