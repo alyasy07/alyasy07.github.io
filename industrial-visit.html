@@ -409,6 +409,38 @@
             font-size: 1.1rem;
             color: var(--text-dim);
         }
+
+        /* Light Mode Modal Styles */
+        body.light-mode .modal {
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        body.light-mode .modal-content {
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 50px rgba(196, 30, 58, 0.3);
+        }
+
+        body.light-mode .modal-close {
+            color: var(--text);
+        }
+
+        body.light-mode .modal-close:hover {
+            color: var(--primary);
+        }
+
+        body.light-mode .modal-caption {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            color: var(--text);
+        }
+
+        body.light-mode .modal-caption h3 {
+            color: var(--primary);
+        }
+
+        body.light-mode .modal-caption p {
+            color: var(--text-dim);
+        }
         
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -512,7 +544,7 @@
                 <a href="index.html" class="logo">Alya's<span>Portfolio</span></a>
                 <div style="display: flex; align-items: center; gap: 20px;">
                     <a href="index.html" class="back-link">
-                        <i class="fas fa-arrow-left"></i> Back to Main
+                        <i class="fas fa-arrow-left"></i> Back
                     </a>
                     <div class="theme-toggle">
                         <label class="theme-switch" for="theme-checkbox">
