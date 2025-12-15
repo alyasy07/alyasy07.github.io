@@ -932,6 +932,13 @@
             position: relative;
             overflow: hidden;
         }
+
+        .project-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            padding: 20px;
+        }
         
         body.light-mode .project-img {
             background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(255, 240, 245, 0.8));
@@ -944,6 +951,7 @@
             height: 100%;
             background: linear-gradient(45deg, transparent 40%, rgba(212, 165, 165, 0.1) 50%, transparent 60%);
             animation: slide 3s infinite linear;
+            z-index: 0;
         }
         
         @keyframes slide {
@@ -970,40 +978,103 @@
         }
         
         .tag {
-            background-color: rgba(196, 30, 58, 0.2);
-            color: #ffffff;
-            padding: 6px 15px;
-            border-radius: 0;
-            font-size: 0.85rem;
+            display: inline-block;
+            background-color: rgba(196, 30, 58, 0.15);
+            color: var(--text);
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.8rem;
             font-weight: 500;
-            border: 1px solid rgba(196, 30, 58, 0.5);
+            border: 1px solid rgba(196, 30, 58, 0.3);
             font-family: 'Crimson Text', serif;
         }
         
         .project-links {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 12px;
             margin-top: 25px;
         }
         
         .project-link {
             display: flex;
             align-items: center;
-            color: var(--text);
+            justify-content: center;
+            background: var(--primary);
+            color: #ffffff;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            padding: 12px 20px;
+            border: none;
             transition: var(--transition);
-            font-family: 'Crimson Text', serif;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(196, 30, 58, 0.15);
+            letter-spacing: 0.3px;
         }
         
         .project-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.35);
+        }
+        
+        body.light-mode .project-link {
+            background: #d9677e;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(217, 103, 126, 0.2);
+        }
+        
+        body.light-mode .project-link:hover {
+            background: var(--primary);
+            box-shadow: 0 3px 8px rgba(196, 30, 58, 0.25);
+        }
+        
+        .project-link.telegram-btn {
+            background: none;
+            border: none;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            box-shadow: none;
+            font-weight: 500;
             color: var(--primary);
-            transform: translateX(5px);
+            justify-content: flex-start;
+        }
+        
+        .project-link.telegram-btn:hover {
+            background: none;
+            transform: none;
+            box-shadow: none;
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        body.light-mode .project-link.telegram-btn {
+            color: var(--primary);
+            background: none;
+            box-shadow: none;
+        }
+        
+        body.light-mode .project-link.telegram-btn:hover {
+            color: var(--primary-dark);
+            background: none;
+            box-shadow: none;
+        }
+        
+        body.light-mode .project-link.telegram-btn i {
+            color: var(--primary);
+        }
+        
+        body.light-mode .project-link.telegram-btn:hover i {
+            color: var(--primary-dark);
         }
         
         .project-link i {
             margin-right: 8px;
-            color: var(--primary);
+            color: #ffffff;
+            font-size: 1rem;
         }
         
         /* Certificates Section */
@@ -1727,7 +1798,7 @@
                             <span class="tag">Graphic Design</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://t.me/yvesshopping" target="_blank" class="project-link">
+                            <a href="https://t.me/yvesshopping" target="_blank" class="project-link telegram-btn">
                                 <i class="fab fa-telegram"></i> Telegram Channel
                             </a>
                         </div>
@@ -1812,12 +1883,15 @@
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/slaces_logo.jpeg" alt="SLACES Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/slaces_logo.jpeg" alt="Smootea Learning Access & Class Enrollment System Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Smootea Learning Access & Class Enrollment System</h3>
+                        <h3 onclick="openDescModal('slaces')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Smootea Learning Access & Class Enrollment System</h3>
                         <p>Web-based learning platform with invoice-based class unlock system, admin dashboard, and student portal for Smootea Academy.</p>
                         <div class="project-tags">
+                            <span class="tag">System Development</span>
+                            <span class="tag">SRS</span>
+                            <span class="tag">SDD</span>
                             <span class="tag">Laravel 10</span>
                             <span class="tag">MySQL</span>
                             <span class="tag">Bootstrap</span>
@@ -1831,6 +1905,9 @@
                             <a href="https://www.figma.com/proto/qBZzlXpmfnoeQIMBErgP2J/slaces?node-id=0-1&t=1md84runYZWTfaih-1" target="_blank" class="project-link">
                                 <i class="fab fa-figma"></i> View Interface
                             </a>
+                            <a href="#" class="project-link" title="Add your documentation link">
+                                <i class="fas fa-file-alt"></i> Documentation
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1839,16 +1916,19 @@
                 <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/oods_logo.jpeg" alt="OODS Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/oods_logo.jpeg" alt="Outlet Ordering Distribution System Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Outlet Ordering Distribution System</h3>
+                        <h3 onclick="openDescModal('oods')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Outlet Ordering Distribution System</h3>
                         <p>Built a delivery tracking and management system using Java with real-time order processing capabilities.</p>
                         <div class="project-tags">
+                            <span class="tag">System Development</span>
+                            <span class="tag">SRS</span>
+                            <span class="tag">SDD</span>
+                            <span class="tag">Documentation</span>
                             <span class="tag">PHP</span>
                             <span class="tag">Laravel</span>
                             <span class="tag">MySQL</span>
-                            <span class="tag">System Development</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/alyasy07/OODSV30" class="project-link" target="_blank">
@@ -1857,6 +1937,9 @@
                             <a href="https://www.figma.com/proto/Qf4NhVPSPzA2OtUQLnxwmB/Untitled?node-id=0-1&t=BJgtpw4Xm1uKGoHY-1" class="project-link" target="_blank">
                                 <i class="fab fa-figma"></i> View Interface
                             </a>
+                            <a href="#" class="project-link" title="Add SRS & SDD documentation link">
+                                <i class="fas fa-file-alt"></i> Documentation
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1864,12 +1947,13 @@
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/recipe_logo.jpeg" alt="Recipe App Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/recipe_logo.jpeg" alt="Recipe Sharing and Meal Planning Application Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Recipe Sharing & Meal Planning</h3>
+                        <h3 onclick="openDescModal('recipe')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Recipe Sharing & Meal Planning</h3>
                         <p>Created a web-based application for recipe sharing and meal planning using Java EE with community features.</p>
                         <div class="project-tags">
+                            <span class="tag">System Development</span>
                             <span class="tag">Java EE</span>
                             <span class="tag">Web Development</span>
                             <span class="tag">Database Management</span>
@@ -1888,12 +1972,13 @@
                 <!-- Project 4 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/gims_logo.jpeg" alt="GIMS Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/gims_logo.jpeg" alt="GERIC Integrated Management System Logo">
                     </div>
                     <div class="project-content">
-                        <h3>GIMS - GERIC Integrated Management System</h3>
+                        <h3 onclick="openDescModal('gims')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">GIMS - GERIC Integrated Management System</h3>
                         <p>Comprehensive management system for GERIC research center with modern UI/UX design and complete system architecture.</p>
                         <div class="project-tags">
+                            <span class="tag">System Development</span>
                             <span class="tag">Figma</span>
                             <span class="tag">System Design</span>
                             <span class="tag">UI/UX</span>
@@ -1913,15 +1998,15 @@
                 <!-- Project 5 - ELMS -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/elms_logo.jpeg" alt="ELMS Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/elms_logo.jpeg" alt="Employee Leave Management System Logo">
                     </div>
                     <div class="project-content">
-                        <h3>ELMS - Employee Leave Management System</h3>
+                        <h3 onclick="openDescModal('elms')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">ELMS - Employee Leave Management System</h3>
                         <p>Streamlined leave management system developed for Nikai Nego Trade to automate leave requests, approvals, and tracking.</p>
                         <div class="project-tags">
+                            <span class="tag">System Development</span>
                             <span class="tag">PHP</span>
                             <span class="tag">MySQL</span>
-                            <span class="tag">System Development</span>
                             <span class="tag">Internship Project</span>
                         </div>
                         <div class="project-links">
@@ -1938,20 +2023,24 @@
                 <!-- Project 6 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/levee_logo.jpeg" alt="Levée Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/levee_logo.jpeg" alt="Levée Fashion Recommendation App Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Levée - Fashion Recommendation App</h3>
+                        <h3 onclick="openDescModal('levee')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Levée - Fashion Recommendation App</h3>
                         <p>Mobile application for personalized fashion recommendations with AI-driven styling suggestions and wardrobe management.</p>
                         <div class="project-tags">
+                            <span class="tag">Multimedia</span>
+                            <span class="tag">Documentation</span>
                             <span class="tag">Figma</span>
                             <span class="tag">Mobile App</span>
                             <span class="tag">UI/UX</span>
-                            <span class="tag">Fashion Tech</span>
                         </div>
                         <div class="project-links">
                             <a href="https://www.figma.com/proto/ktsdaRl9B2JUcRxPbWw9P3/ISP640---MIDDLE-FIDELITY--Copy-?node-id=0-1&t=LJ8eU3eSF4k5qBuQ-1" target="_blank" class="project-link">
                                 <i class="fab fa-figma"></i> View Prototype
+                            </a>
+                            <a href="#" class="project-link" title="Add business plan documentation link">
+                                <i class="fas fa-file-alt"></i> Documentation
                             </a>
                         </div>
                     </div>
@@ -1960,12 +2049,13 @@
                 <!-- Project 6 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="images/spendity_logo.jpeg" alt="Spendity Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/spendity_logo.jpeg" alt="Spendity E-Wallet Application Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Spendity - E-Wallet with Creative Savings</h3>
+                        <h3 onclick="openDescModal('spendity')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Spendity - E-Wallet with Creative Savings</h3>
                         <p>Innovative e-wallet application featuring gamified savings strategies and smart budgeting tools for financial wellness.</p>
                         <div class="project-tags">
+                            <span class="tag">Multimedia</span>
                             <span class="tag">Figma</span>
                             <span class="tag">Mobile App</span>
                             <span class="tag">FinTech</span>
@@ -1982,16 +2072,16 @@
                 <!-- Project 7 -->
                 <div class="project-card">
                     <div class="project-img">
-                         <img src="images/ric_logo.jpeg" alt=" Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/ric_logo.jpeg" alt="Research Ideation Canvas Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Research Ideation Canvas</h3>
+                        <h3 onclick="openDescModal('ric')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Research Ideation Canvas</h3>
                         <p>Interactive web-based system for organizing and visualizing research ideas with collaborative ideation tools and structured frameworks.</p>
                         <div class="project-tags">
+                            <span class="tag">System Development</span>
                             <span class="tag">Laravel</span>
                             <span class="tag">Web Development</span>
                             <span class="tag">Research Tools</span>
-                            <span class="tag">System Design</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/alyasy07/RICV1" target="_blank" class="project-link">
@@ -2007,12 +2097,13 @@
                 <!-- Project 8 -->
                 <div class="project-card">
                     <div class="project-img">
-                         <img src="images/life_logo.jpeg" alt="Spendity Logo" style="width: 100%; height: 100%; object-fit: contain; padding: 20px;">
+                        <img src="images/life_logo.jpeg" alt="Life Spark Community Health Application Logo">
                     </div>
                     <div class="project-content">
-                        <h3>Life Spark - Community Health Application</h3>
+                        <h3 onclick="openDescModal('lifespark')" style="cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">Life Spark - Community Health Application</h3>
                         <p>Physical prototype of a health application for Taman Tasik Seksyen 7, emphasizing the human connection between technology and community wellness needs through critical and creative problem-solving.</p>
                         <div class="project-tags">
+                            <span class="tag">Multimedia</span>
                             <span class="tag">Prototype Design</span>
                             <span class="tag">Community Health</span>
                             <span class="tag">User Research</span>
@@ -2041,6 +2132,15 @@
         </button>
         <div class="modal-caption" id="projectModalCaption"></div>
         <div class="modal-counter" id="projectModalCounter"></div>
+    </div>
+
+    <!-- Project Description Modal -->
+    <div id="projectDescModal" class="modal" onclick="closeDescModal(event)" style="display: none;">
+        <div class="modal-caption" style="position: relative; bottom: auto; left: auto; transform: none; max-width: 700px; margin: auto; padding: 40px;">
+            <span class="modal-close" onclick="closeDescModal()" style="position: absolute; top: 10px; right: 20px; font-size: 40px;">&times;</span>
+            <h3 id="descModalTitle" style="font-size: 2rem; margin-bottom: 20px;"></h3>
+            <p id="descModalContent" style="font-size: 1.1rem; line-height: 1.8; text-align: left; white-space: pre-line;"></p>
+        </div>
     </div>
 
     <div class="divider"></div>
@@ -2545,6 +2645,81 @@
                 
                 // Add smooth transition effect
                 body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
+            }
+        });
+
+        // Project Description Modal Functions
+        const projectDescriptions = {
+            dummy: {
+                title: "Test Project - Click Any Project Title to See Details!",
+                description: "This is a sample popup to demonstrate the project details feature.\n\nHow it works:\n• Click on any project title (they're now clickable!)\n• A beautiful modal will appear with detailed information\n• Each project has comprehensive descriptions\n• Press ESC or click outside to close\n• Works perfectly in both light and dark modes\n\nTry clicking on project titles like:\n• Smootea Learning Access & Class Enrollment System\n• Outlet Ordering Distribution System\n• Recipe Sharing & Meal Planning\n• And more!\n\nEnjoy exploring your portfolio! 🌸"
+            },
+            slaces: {
+                title: "Smootea Learning Access & Class Enrollment System (SLACES)",
+                description: "A comprehensive web-based learning management platform built using Laravel 10 framework.\n\nKey Features:\n• Invoice-based class unlock system for seamless payment integration\n• Admin dashboard for course management and student oversight\n• Student portal with progress tracking and course materials\n• Real-time enrollment management\n• Responsive design for mobile and desktop access\n• Secure authentication and role-based access control\n\nDeveloped as Final Year Project with focus on educational technology and user experience design."
+            },
+            oods: {
+                title: "Outlet Ordering Distribution System (OODS)",
+                description: "Enterprise-level delivery tracking and management system developed using Visual Studio Code and Laravel.\n\nKey Features:\n• Real-time order processing and tracking\n• Multi-outlet management capabilities\n• Distribution route optimization\n• Automated notification system\n• Comprehensive reporting and analytics\n• Inventory integration\n\nDocumentation:\n• Software Requirement Specification (SRS)\n• Software Design Document (SDD)\n\nFocus on scalable architecture and efficient delivery logistics management."
+            },
+            recipe: {
+                title: "Recipe Sharing & Meal Planning System",
+                description: "Collaborative web-based application built with Java EE for community-driven recipe sharing.\n\nKey Features:\n• User-generated recipe submissions with rich media support\n• Meal planning calendar and scheduling\n• Ingredient shopping list generation\n• Community ratings and reviews\n• Search and filter by dietary preferences\n• Nutritional information tracking\n• Social features for sharing and commenting\n\nGroup project emphasizing collaborative development and modern web technologies."
+            },
+            gims: {
+                title: "GERIC Integrated Management System (GIMS)",
+                description: "Comprehensive management system for GERIC research center with complete system architecture design.\n\nKey Features:\n• Full-stack development using Laravel framework\n• Modern and intuitive UI/UX design\n• Research project management modules\n• Resource allocation and tracking\n• Document management system\n• User role management and permissions\n• Analytics and reporting dashboard\n• Responsive design for all devices\n\nEmphasis on research workflow optimization and data management best practices."
+            },
+            elms: {
+                title: "Employee Leave Management System (ELMS)",
+                description: "Streamlined leave management system developed during internship at Nikai Nego Trade.\n\nKey Features:\n• Automated leave request workflow\n• Manager approval system\n• Leave balance tracking and calculations\n• Calendar integration for leave scheduling\n• Email notifications for requests and approvals\n• Leave history and reporting\n• Multiple leave type management (annual, sick, emergency)\n• User-friendly interface for employees and managers\n\nDeveloped to reduce manual errors and streamline HR processes, improving efficiency by 60%."
+            },
+            levee: {
+                title: "Levée - Fashion Recommendation Mobile Application",
+                description: "AI-driven mobile application for personalized fashion recommendations and wardrobe management.\n\nKey Features:\n• Personalized style recommendations based on user preferences\n• Virtual wardrobe management and outfit planning\n• AI-powered styling suggestions\n• Trend analysis and fashion forecasting\n• Shopping integration with multiple retailers\n• Social sharing and community features\n• Seasonal wardrobe planning\n\nDocumentation:\n• Complete Business Plan\n• Market analysis and competitive research\n• Revenue model and monetization strategy\n\nDesigned with focus on user experience and modern fashion technology trends."
+            },
+            spendity: {
+                title: "Spendity - E-Wallet with Creative Savings",
+                description: "Innovative e-wallet application with gamified savings strategies for financial wellness.\n\nKey Features:\n• Creative savings challenges and goals\n• Gamification elements to encourage saving habits\n• Smart budgeting tools and expense tracking\n• Visual spending analytics and insights\n• Bill reminders and payment scheduling\n• Multiple wallet management\n• Rewards and achievement system\n• Social savings challenges with friends\n\nDesigned using Figma with emphasis on behavioral economics and user engagement through playful financial management."
+            },
+            ric: {
+                title: "Research Ideation Canvas (RIC)",
+                description: "Interactive web-based system for organizing and visualizing research ideas with collaborative tools.\n\nKey Features:\n• Structured framework for research ideation\n• Visual canvas for brainstorming and mind mapping\n• Collaborative editing and commenting\n• Research project template library\n• Literature review integration\n• Citation and reference management\n• Export to various documentation formats\n• Team collaboration features\n• Version control for research iterations\n\nBuilt with Laravel to support academic and professional research teams in organizing complex research projects."
+            },
+            lifespark: {
+                title: "Life Spark - Community Health Application",
+                description: "Physical prototype of a health application designed for Taman Tasik Seksyen 7 community.\n\nProject Focus:\n• Human-centered design approach\n• Community wellness and healthcare accessibility\n• Physical prototype development\n• User research and testing\n• Creative problem-solving methodologies\n• Critical thinking in healthcare technology\n\nCommunity Impact:\n• Bridging technology and community needs\n• Addressing local health concerns\n• User-friendly interface for diverse age groups\n• Promoting preventive healthcare awareness\n• Building stronger community connections\n\nEmphasizes the importance of understanding community needs and creating technology solutions that genuinely serve people, not just for technological advancement sake."
+            }
+        };
+
+        function openDescModal(projectId) {
+            const modal = document.getElementById('projectDescModal');
+            const title = document.getElementById('descModalTitle');
+            const content = document.getElementById('descModalContent');
+            
+            if (projectDescriptions[projectId]) {
+                title.textContent = projectDescriptions[projectId].title;
+                content.textContent = projectDescriptions[projectId].description;
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeDescModal(event) {
+            const modal = document.getElementById('projectDescModal');
+            if (event) {
+                // Only close if clicking the modal background, not the content
+                if (event.target === modal || event.target.className === 'modal-close') {
+                    modal.style.display = 'none';
+                }
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDescModal();
             }
         });
     </script>
