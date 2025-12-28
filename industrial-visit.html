@@ -10,6 +10,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Playfair+Display:wght@400;500;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         :root {
             --primary: #c41e3a;
@@ -57,12 +58,31 @@
             color: var(--text);
             background-color: var(--dark);
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Three.js Canvas Background */
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        
+        body.light-mode #three-canvas {
+            opacity: 0.3;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
         
         /* Header & Navigation */
@@ -537,6 +557,9 @@
     </style>
 </head>
 <body>
+    <!-- Three.js Background Canvas -->
+    <canvas id="three-canvas"></canvas>
+    
     <!-- Header & Navigation -->
     <header>
         <div class="container">
@@ -754,6 +777,152 @@
                 body.classList.remove('light-mode');
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+        // Three.js Floating Hearts Animation
+        const canvas = document.getElementById('three-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        camera.position.z = 30;
+
+        // Create heart shape
+        function createHeartShape() {
+            const heartShape = new THREE.Shape();
+            const x = 0, y = 0;
+            heartShape.moveTo(x + 0.5, y + 0.5);
+            heartShape.bezierCurveTo(x + 0.5, y + 0.5, x + 0.4, y, x, y);
+            heartShape.bezierCurveTo(x - 0.6, y, x - 0.6, y + 0.7, x - 0.6, y + 0.7);
+            heartShape.bezierCurveTo(x - 0.6, y + 1.1, x - 0.3, y + 1.54, x + 0.5, y + 1.9);
+            heartShape.bezierCurveTo(x + 1.2, y + 1.54, x + 1.6, y + 1.1, x + 1.6, y + 0.7);
+            heartShape.bezierCurveTo(x + 1.6, y + 0.7, x + 1.6, y, x + 1, y);
+            heartShape.bezierCurveTo(x + 0.7, y, x + 0.5, y + 0.5, x + 0.5, y + 0.5);
+            return heartShape;
+        }
+
+        // Create heart particles
+        const hearts = [];
+        const heartShape = createHeartShape();
+        const heartColors = [0xc41e3a, 0xe63946, 0xd16a6a, 0xe8b4b4, 0xff1493, 0xff69b4];
+
+        for (let i = 0; i < 15; i++) {
+            const size = 2 + Math.random() * 1.5;
+            const color = heartColors[Math.floor(Math.random() * heartColors.length)];
+            
+            const extrudeSettings = {
+                depth: size * 0.4,
+                bevelEnabled: true,
+                bevelThickness: size * 0.08,
+                bevelSize: size * 0.08,
+                bevelSegments: 5
+            };
+            
+            const heartGeometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+            heartGeometry.center();
+            
+            const material = new THREE.MeshPhongMaterial({ 
+                color: color,
+                shininess: 100,
+                transparent: true,
+                opacity: 0.9,
+                side: THREE.DoubleSide,
+                emissive: color,
+                emissiveIntensity: 0.3
+            });
+            const heart = new THREE.Mesh(heartGeometry, material);
+            
+            heart.position.x = (Math.random() - 0.5) * 60;
+            heart.position.y = (Math.random() - 0.5) * 50;
+            heart.position.z = (Math.random() - 0.5) * 40;
+            
+            heart.rotation.x = Math.random() * Math.PI;
+            heart.rotation.y = Math.random() * Math.PI;
+            heart.rotation.z = Math.random() * Math.PI;
+            
+            heart.userData = {
+                velocityX: (Math.random() - 0.5) * 0.02,
+                velocityY: (Math.random() - 0.5) * 0.02,
+                velocityZ: (Math.random() - 0.5) * 0.02,
+                rotationSpeedX: (Math.random() - 0.5) * 0.01,
+                rotationSpeedY: (Math.random() - 0.5) * 0.01,
+                rotationSpeedZ: (Math.random() - 0.5) * 0.01,
+                floatSpeed: 0.3 + Math.random() * 0.5,
+                floatHeight: 1 + Math.random() * 1.5,
+                originalY: heart.position.y,
+                phase: Math.random() * Math.PI * 2,
+                pulseSpeed: 0.5 + Math.random() * 0.5
+            };
+            
+            scene.add(heart);
+            hearts.push(heart);
+        }
+
+        // Add lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        
+        const pointLight1 = new THREE.PointLight(0xc41e3a, 1, 100);
+        pointLight1.position.set(10, 10, 10);
+        scene.add(pointLight1);
+        
+        const pointLight2 = new THREE.PointLight(0xe63946, 1, 100);
+        pointLight2.position.set(-10, -10, 10);
+        scene.add(pointLight2);
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const time = Date.now() * 0.001;
+            
+            hearts.forEach(heart => {
+                // Move hearts
+                heart.position.x += heart.userData.velocityX;
+                heart.position.z += heart.userData.velocityZ;
+                
+                // Floating motion
+                heart.position.y = heart.userData.originalY + 
+                    Math.sin(time * heart.userData.floatSpeed + heart.userData.phase) * 
+                    heart.userData.floatHeight;
+                
+                // Rotate hearts
+                heart.rotation.x += heart.userData.rotationSpeedX;
+                heart.rotation.y += heart.userData.rotationSpeedY;
+                heart.rotation.z += heart.userData.rotationSpeedZ;
+                
+                // Pulsing effect
+                const pulse = 1 + Math.sin(time * heart.userData.pulseSpeed) * 0.1;
+                heart.scale.set(pulse, pulse, pulse);
+                
+                // Boundary check and reset
+                if (Math.abs(heart.position.x) > 50) {
+                    heart.position.x = (Math.random() - 0.5) * 60;
+                    heart.userData.velocityX *= -1;
+                }
+                if (Math.abs(heart.position.z) > 50) {
+                    heart.position.z = (Math.random() - 0.5) * 40;
+                    heart.userData.velocityZ *= -1;
+                }
+            });
+            
+            // Rotate camera slowly
+            camera.position.x = Math.sin(Date.now() * 0.0001) * 2;
+            camera.position.y = Math.cos(Date.now() * 0.0001) * 2;
+            camera.lookAt(scene.position);
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
