@@ -1171,7 +1171,7 @@
         .verified-badge {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(135deg, #4285f4, #34a853);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             padding: 4px 12px;
             border-radius: 12px;
@@ -1179,7 +1179,15 @@
             font-weight: 600;
             margin-left: 10px;
             letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+            box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+            border: 1px solid rgba(196, 30, 58, 0.2);
+        }
+        
+        body.light-mode .verified-badge {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 2px 8px rgba(196, 30, 58, 0.25);
+            border: 1px solid rgba(196, 30, 58, 0.3);
         }
         
         .verified-badge i {
@@ -2221,6 +2229,10 @@
                             <h3>Introduction to Internet of Things (IoT)</h3>
                             <p>Cisco Networking Academy • 2025</p>
                             <a href="https://www.credly.com/badges/f3349313-fb57-4a71-a6a2-210821f9b431/linked_in_profile" target="_blank" class="view-cert">View Certificate <i class="fas fa-arrow-right"></i></a>
+                            <span class="verified-badge">
+                                <i class="fas fa-shield-check"></i>
+                                VERIFIED
+                            </span>
                         </div>
                     </div>
                     
@@ -2232,8 +2244,12 @@
                         <div>
                             <h3>Google User Experience (UX) Design Specialization</h3>
                             <p>Coursera • 2025</p>
-                            <p>Credential ID: GE2YUNPNWM65</p>
+                            <p style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">Credential ID: GE2YUNPNWM65</p>
                             <a href="https://www.coursera.org/account/accomplishments/specialization/GE2YUNPNWM65" target="_blank" class="view-cert">View Certificate <i class="fas fa-arrow-right"></i></a>
+                            <span class="verified-badge">
+                                <i class="fas fa-shield-check"></i>
+                                VERIFIED
+                            </span>
                         </div>
                     </div>
                     
@@ -2246,6 +2262,28 @@
                             <h3>Career Essentials in Data Analysis by Microsoft and LinkedIn</h3>
                             <p>Microsoft • December 2025</p>
                             <a href="https://www.linkedin.com/learning/certificates/6aa09438d77800abf2452f4065136d383491f8605b6f2f791b6ea942a91627af" target="_blank" class="view-cert">View Certificate <i class="fas fa-arrow-right"></i></a>
+                            <span class="verified-badge">
+                                <i class="fas fa-shield-check"></i>
+                                VERIFIED
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 4 - Copyright -->
+                    <div class="certificate-card">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h3>Certificate of Notification of Copyright</h3>
+                            <p>MyIPO Malaysia • December 2025</p>
+                            <p>GERIC Integrated Management System (GIMS)</p>
+                            <p style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">Notification No: CRLY2025C13186</p>
+                            <a href="images/certificate.png" target="_blank" class="view-cert">View Certificate <i class="fas fa-arrow-right"></i></a>
+                            <span class="verified-badge">
+                                <i class="fas fa-shield-check"></i>
+                                VERIFIED
+                            </span>
                         </div>
                     </div>
                 </div>
