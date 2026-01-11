@@ -2900,10 +2900,20 @@
                     <h3><i class="fas fa-bullseye"></i> Strategic Visual Communication</h3>
                     
                     <h4>AENC Branding</h4>
-                    <p>Conceptualized and designed the logo for the ASEAN Entrepreneurship Network Council (AENC) to establish regional brand identity.</p>
+                    <div style="display: flex; align-items: center; gap: 30px; margin: 25px 0; flex-wrap: wrap;">
+                        <img src="images/AENC.png" alt="AENC Logo" style="width: 250px; height: 250px; object-fit: contain; border: 2px solid rgba(196, 30, 58, 0.3); padding: 20px; background: rgba(196, 30, 58, 0.08); flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <p style="margin: 0; font-size: 1.05rem;">Conceptualized and designed the logo for the ASEAN Entrepreneurship Network Council (AENC) to establish regional brand identity.</p>
+                        </div>
+                    </div>
                     
                     <h4>International Conference Logo</h4>
-                    <p>Designed the official logo for the International Conference on Entrepreneurship Research and Innovation (ICERI) 2026.</p>
+                    <div style="display: flex; align-items: center; gap: 30px; margin: 25px 0; flex-wrap: wrap;">
+                        <img id="iceriLogo" src="images/ICERI.png" alt="ICERI 2026 Logo" style="width: 250px; height: 250px; object-fit: contain; border: 2px solid rgba(196, 30, 58, 0.3); padding: 20px; background: rgba(196, 30, 58, 0.08); flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <p style="margin: 0; font-size: 1.05rem;">Designed the official logo for the International Conference on Entrepreneurship Research and Innovation (ICERI) 2026.</p>
+                        </div>
+                    </div>
                     
                     <h4>Executive Presentations</h4>
                     <p>Developed high-impact presentation decks for the Vice Chancellor and strategic workshops regarding the 2026–2030 GERIC Roadmap.</p>
@@ -3685,17 +3695,34 @@
             if (this.checked) {
                 body.classList.add('light-mode');
                 localStorage.setItem('theme', 'light');
+                updateIceriLogo('light');
                 
                 // Add smooth transition effect
                 body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
             } else {
                 body.classList.remove('light-mode');
                 localStorage.setItem('theme', 'dark');
+                updateIceriLogo('dark');
                 
                 // Add smooth transition effect
                 body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
             }
         });
+
+        // Function to update ICERI logo based on theme
+        function updateIceriLogo(theme) {
+            const iceriLogo = document.getElementById('iceriLogo');
+            if (iceriLogo) {
+                if (theme === 'dark') {
+                    iceriLogo.src = 'images/ICERI2.png';
+                } else {
+                    iceriLogo.src = 'images/ICERI.png';
+                }
+            }
+        }
+
+        // Initialize ICERI logo on page load
+        updateIceriLogo(currentTheme);
 
         // Project Description Modal Functions
         const projectDescriptions = {
