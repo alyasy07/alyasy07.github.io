@@ -886,6 +886,10 @@
             justify-content: center;
             animation: fadeIn 0.3s ease;
         }
+        
+        .modal.show {
+            display: flex !important;
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -894,11 +898,15 @@
 
         .modal-content {
             max-width: 90%;
-            max-height: 80vh;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
             object-fit: contain;
             border: 2px solid var(--primary);
             box-shadow: 0 0 50px rgba(196, 30, 58, 0.5);
             animation: zoomIn 0.3s ease;
+            background: white;
+            margin-bottom: 100px;
         }
 
         @keyframes zoomIn {
@@ -926,16 +934,17 @@
 
         .modal-caption {
             position: absolute;
-            bottom: 80px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
             color: var(--text);
-            padding: 20px 40px;
+            padding: 15px 30px;
             background: rgba(15, 10, 10, 0.9);
             border: var(--border);
-            max-width: 80%;
+            max-width: 90%;
             backdrop-filter: blur(10px);
+            border-radius: 10px;
         }
 
         .modal-caption h3 {
@@ -1011,9 +1020,10 @@
         }
 
         body.light-mode .modal-caption {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(196, 30, 58, 0.3);
+            background: rgba(254, 246, 246, 0.98);
+            border: 2px solid rgba(196, 30, 58, 0.4);
             color: var(--text);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         body.light-mode .modal-caption h3 {
@@ -1021,7 +1031,7 @@
         }
 
         body.light-mode .modal-caption p {
-            color: var(--text-dim);
+            color: #2d1f1f;
         }
 
         body.light-mode .modal-counter {
@@ -1036,6 +1046,293 @@
 
         body.light-mode .modal-nav:hover {
             background: var(--primary);
+        }
+        
+        /* Internship Modal Styles */
+        .internship-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .internship-modal-content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px 40px;
+            position: relative;
+        }
+        
+        .internship-modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: var(--text);
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10001;
+        }
+        
+        .internship-modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .internship-header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(196, 30, 58, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        .internship-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        
+        .internship-header p {
+            color: var(--text-dim);
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2rem;
+        }
+        
+        .internship-header .period {
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 10px;
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            background: rgba(196, 30, 58, 0.1);
+        }
+        
+        /* Tab Navigation */
+        .internship-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .internship-tab {
+            padding: 15px 30px;
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            color: var(--text);
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .internship-tab:hover {
+            background: rgba(196, 30, 58, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .internship-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .internship-tab i {
+            font-size: 1.1rem;
+        }
+        
+        /* Tab Content */
+        .internship-tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .internship-tab-content.active {
+            display: block;
+        }
+        
+        .internship-section {
+            background: var(--card-bg);
+            border: var(--border);
+            padding: 35px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .internship-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .internship-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .internship-section h3 i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .internship-section h4 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(196, 30, 58, 0.2);
+        }
+        
+        .internship-section p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .internship-section ul {
+            color: var(--text-dim);
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .internship-section ul li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .internship-section ul li::marker {
+            color: var(--primary);
+        }
+        
+        .highlight-box {
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            padding: 20px 25px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .highlight-box i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .highlight-box .highlight-content h5 {
+            color: var(--text);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .highlight-box .highlight-content p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(196, 30, 58, 0.15);
+            color: var(--text);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        /* Light mode adjustments for internship modal */
+        body.light-mode .internship-modal {
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        body.light-mode .internship-section {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(196, 30, 58, 0.08);
+        }
+        
+        body.light-mode .internship-tab {
+            background: rgba(196, 30, 58, 0.05);
+        }
+        
+        body.light-mode .internship-tab:hover {
+            background: rgba(196, 30, 58, 0.15);
+        }
+        
+        body.light-mode .internship-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        body.light-mode .highlight-box {
+            background: rgba(196, 30, 58, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .internship-modal-content {
+                margin: 20px auto;
+                padding: 0 15px 30px;
+            }
+            
+            .internship-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .internship-tabs {
+                gap: 8px;
+            }
+            
+            .internship-tab {
+                padding: 12px 18px;
+                font-size: 0.85rem;
+            }
+            
+            .internship-section {
+                padding: 25px 20px;
+            }
+            
+            .internship-section h3 {
+                font-size: 1.3rem;
+            }
+            
+            .internship-modal-close {
+                top: 10px;
+                right: 15px;
+                font-size: 35px;
+            }
         }
         
         .project-card {
@@ -1878,50 +2175,55 @@
                 <p>Professional internships and real-world project experience</p>
             </div>
             <div style="display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 900px; margin: 0 auto;">
-                <!-- Experience 1 -->
-                <div class="project-card">
+                <!-- Experience 1 - GERIC UMK (Featured) - September 2025 – January 2026 -->
+                <div class="project-card" style="border: 2px solid var(--primary); position: relative; overflow: visible; margin-top: 15px;">
+                    <div style="position: absolute; top: -12px; left: 20px; background: var(--primary); color: white; padding: 5px 15px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; z-index: 10;">FEATURED INTERNSHIP</div>
                     <div class="project-content">
                         <h3>Software Development Intern</h3>
                         <p style="color: var(--accent); font-weight: 600; margin-bottom: 10px;">Global Entrepreneurship Research and Innovation Center (GERIC), UMK</p>
                         <p style="font-size: 0.9rem; margin-bottom: 15px;">September 2025 – January 2026 | Pengkalan Chepa, Kelantan</p>
                         <ul style="color: var(--text-dim); margin-left: 20px; margin-bottom: 15px;">
-                            <li style="margin-bottom: 8px;">Architected and developed the GERIC Integrated Management System and Research Canvas Ideation System using Laravel.</li>
-                            <li style="margin-bottom: 8px;">Led functional testing and code optimization, ensuring system stability and performance.</li>
-                            <li style="margin-bottom: 8px;">Designed professional publications and presentation materials for executive leadership.</li>
-                            <li style="margin-bottom: 8px;">Coordinated logistics and operations for the BUSINESS CASE STUDY IDEA 2025 competition.</li>
+                            <li style="margin-bottom: 8px;">Architected and developed the GERIC Integrated Management System (GIMS) v12 using Laravel with myIPO copyright registration.</li>
+                            <li style="margin-bottom: 8px;">Designed branding materials for AENC, ICERI 2026, and executive presentations for Vice Chancellor.</li>
+                            <li style="margin-bottom: 8px;">Served as editor for NPC 2026 e-Proceeding book and designed AKKPT 2025 publication.</li>
+                            <li style="margin-bottom: 8px;">Managed GERIC social media and website content, coordinated BUSINESS CASE STUDY IDEA 2025 competition.</li>
                         </ul>
                         <div class="project-tags">
                             <span class="tag">Laravel</span>
                             <span class="tag">Full-Stack Development</span>
                             <span class="tag">System Architecture</span>
-                            <span class="tag">Project Management</span>
-                            <span class="tag">Canva</span>
+                            <span class="tag">Graphic Design</span>
+                            <span class="tag">Copyright (myIPO)</span>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <button onclick="openInternshipModal()" class="project-link" style="cursor: pointer; border: none;">
+                                <i class="fas fa-expand-alt"></i> View Complete Internship Details
+                            </button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Experience 2 -->
+                <!-- Experience 2 - Digital Product Seller - September 2025 – Present -->
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Design & Development Intern</h3>
-                        <p style="color: var(--accent); font-weight: 600; margin-bottom: 10px;">Nikai Nego Trade, Kota Bharu, Kelantan</p>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px;">October 2022 – March 2023</p>
+                        <h3>Digital Product Seller</h3>
+                        <p style="color: var(--accent); font-weight: 600; margin-bottom: 10px;">Independent</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 15px;">September 2025 – Present</p>
                         <ul style="color: var(--text-dim); margin-left: 20px; margin-bottom: 15px;">
-                            <li style="margin-bottom: 8px;">Developed an Employee Leave Management System to automate requests and eliminate manual tracking errors.</li>
-                            <li style="margin-bottom: 8px;">Designed branding materials including logos and signage using Adobe Illustrator for diverse client needs.</li>
-                            <li style="margin-bottom: 8px;">Managed client relations and order processing, ensuring timely delivery and customer satisfaction.</li>
-                            <li style="margin-bottom: 8px;">Maintained accurate financial records and invoice management systems.</li>
+                            <li style="margin-bottom: 8px;">Managed end-to-end sales operations for digital products, optimizing listings for maximum visibility.</li>
+                            <li style="margin-bottom: 8px;">Maintained a 100% positive rating across 100+ transactions through efficient service delivery.</li>
+                            <li style="margin-bottom: 8px;">Streamlined customer support processes to ensure rapid response times and user satisfaction.</li>
                         </ul>
                         <div class="project-tags">
-                            <span class="tag">System Development</span>
-                            <span class="tag">Adobe Illustrator</span>
-                            <span class="tag">Graphic Design</span>
-                            <span class="tag">Client Management</span>
+                            <span class="tag">Digital Sales</span>
+                            <span class="tag">E-Commerce</span>
+                            <span class="tag">Customer Service</span>
+                            <span class="tag">Product Management</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Experience 3 -->
+                <!-- Experience 3 - Affiliate Content Creator - November 2023 – June 2025 -->
                 <div class="project-card">
                     <div class="project-content">
                         <h3>Affiliate Content Creator</h3>
@@ -1946,22 +2248,23 @@
                     </div>
                 </div>
                 
-                <!-- Experience 4 -->
+                <!-- Experience 4 - Nikai Nego Trade - October 2022 – March 2023 -->
                 <div class="project-card">
                     <div class="project-content">
-                        <h3>Digital Product Seller</h3>
-                        <p style="color: var(--accent); font-weight: 600; margin-bottom: 10px;">Independent</p>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px;">September 2025 – Present</p>
+                        <h3>Design & Development Intern</h3>
+                        <p style="color: var(--accent); font-weight: 600; margin-bottom: 10px;">Nikai Nego Trade, Kota Bharu, Kelantan</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 15px;">October 2022 – March 2023</p>
                         <ul style="color: var(--text-dim); margin-left: 20px; margin-bottom: 15px;">
-                            <li style="margin-bottom: 8px;">Managed end-to-end sales operations for digital products, optimizing listings for maximum visibility.</li>
-                            <li style="margin-bottom: 8px;">Maintained a 100% positive rating across 100+ transactions through efficient service delivery.</li>
-                            <li style="margin-bottom: 8px;">Streamlined customer support processes to ensure rapid response times and user satisfaction.</li>
+                            <li style="margin-bottom: 8px;">Developed an Employee Leave Management System to automate requests and eliminate manual tracking errors.</li>
+                            <li style="margin-bottom: 8px;">Designed branding materials including logos and signage using Adobe Illustrator for diverse client needs.</li>
+                            <li style="margin-bottom: 8px;">Managed client relations and order processing, ensuring timely delivery and customer satisfaction.</li>
+                            <li style="margin-bottom: 8px;">Maintained accurate financial records and invoice management systems.</li>
                         </ul>
                         <div class="project-tags">
-                            <span class="tag">Digital Sales</span>
-                            <span class="tag">E-Commerce</span>
-                            <span class="tag">Customer Service</span>
-                            <span class="tag">Product Management</span>
+                            <span class="tag">System Development</span>
+                            <span class="tag">Adobe Illustrator</span>
+                            <span class="tag">Graphic Design</span>
+                            <span class="tag">Client Management</span>
                         </div>
                     </div>
                 </div>
@@ -2444,6 +2747,309 @@
             <span class="modal-close" onclick="closeDescModal()" style="position: absolute; top: 10px; right: 20px; font-size: 40px; cursor: pointer;">&times;</span>
             <h3 id="descModalTitle" style="font-size: 2rem; margin-bottom: 20px;"></h3>
             <p id="descModalContent" style="font-size: 1.1rem; line-height: 1.8; text-align: left; white-space: pre-line;"></p>
+        </div>
+    </div>
+
+    <!-- Internship Details Modal -->
+    <div id="internshipModal" class="internship-modal">
+        <span class="internship-modal-close" onclick="closeInternshipModal()">&times;</span>
+        <div class="internship-modal-content">
+            <div class="internship-header">
+                <h2>🌸 Internship at GERIC, UMK</h2>
+                <p>Global Entrepreneurship Research and Innovation Center</p>
+                <span class="period"><i class="fas fa-calendar-alt"></i> September 2025 – January 2026</span>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="internship-tabs">
+                <button class="internship-tab active" onclick="showInternshipTab('overview')">
+                    <i class="fas fa-home"></i> Overview
+                </button>
+                <button class="internship-tab" onclick="showInternshipTab('gims')">
+                    <i class="fas fa-code"></i> GIMS v12
+                </button>
+                <button class="internship-tab" onclick="showInternshipTab('design')">
+                    <i class="fas fa-palette"></i> Graphic Design
+                </button>
+                <button class="internship-tab" onclick="showInternshipTab('publications')">
+                    <i class="fas fa-book"></i> Publications
+                </button>
+                <button class="internship-tab" onclick="showInternshipTab('evaluation')">
+                    <i class="fas fa-chart-line"></i> Evaluation
+                </button>
+            </div>
+            
+            <!-- Tab Content: Overview -->
+            <div id="tab-overview" class="internship-tab-content active">
+                <div class="internship-section">
+                    <h3><i class="fas fa-building"></i> About The Organization</h3>
+                    <p>GERIC (Global Entrepreneurship Research and Innovation Center) is a research center under Universiti Malaysia Kelantan (UMK) dedicated to fostering entrepreneurship, innovation, and research excellence in the academic and business community.</p>
+                    <p>During my internship, I was entrusted with significant projects that combined software development, graphic design, and operational support responsibilities.</p>
+                </div>
+                
+                <div class="internship-section">
+                    <h3><i class="fas fa-tasks"></i> Key Contributions</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+                        <div class="highlight-box">
+                            <i class="fas fa-laptop-code"></i>
+                            <div class="highlight-content">
+                                <h5>System Development</h5>
+                                <p>Built GIMS v12 with Laravel, MySQL, and RBAC architecture</p>
+                            </div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fas fa-certificate"></i>
+                            <div class="highlight-content">
+                                <h5>IP Registration</h5>
+                                <p>Secured myIPO copyright (CRLY2025C13186)</p>
+                            </div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fas fa-paint-brush"></i>
+                            <div class="highlight-content">
+                                <h5>Brand Design</h5>
+                                <p>Created logos for AENC and ICERI 2026</p>
+                            </div>
+                        </div>
+                        <div class="highlight-box">
+                            <i class="fas fa-book-open"></i>
+                            <div class="highlight-content">
+                                <h5>Publication Editor</h5>
+                                <p>Edited NPC 2026 e-Proceeding book</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="internship-section">
+                    <h3><i class="fas fa-tools"></i> Skills Applied</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Laravel (PHP)</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">RBAC</span>
+                        <span class="tech-tag">ERD Design</span>
+                        <span class="tech-tag">UAT Testing</span>
+                        <span class="tech-tag">Affinity Designer</span>
+                        <span class="tech-tag">Canva</span>
+                        <span class="tech-tag">Microsoft Word</span>
+                        <span class="tech-tag">Technical Documentation</span>
+                        <span class="tech-tag">Social Media Management</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Content: GIMS v12 -->
+            <div id="tab-gims" class="internship-tab-content">
+                <div class="internship-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> The Challenge</h3>
+                    <p>GERIC faced difficulties tracking document statuses, a lack of centralized storage, and time-consuming manual reporting processes. I was tasked to replace a legacy XAMPP setup with a modern, secure architecture.</p>
+                </div>
+                
+                <div class="internship-section">
+                    <h3><i class="fas fa-cogs"></i> Technical Execution</h3>
+                    
+                    <h4>Framework and Backend</h4>
+                    <p>Developed using PHP and the Laravel framework with a modular architecture for high maintainability.</p>
+                    
+                    <h4>Database Design</h4>
+                    <p>Engineered a MySQL database including an Entity Relationship Diagram (ERD) to manage complex data flow across tables.</p>
+                    
+                    <h4>System Architecture</h4>
+                    <p>Implemented a three-layer model (User Interface, Domain, and Data Access) to improve security and scalability.</p>
+                    
+                    <h4>Security</h4>
+                    <p>Integrated Role-Based Access Control (RBAC) to restrict functions and maintain data integrity based on user permissions.</p>
+                    
+                    <h4>Process Modeling</h4>
+                    <p>Created Level-0 Context Diagrams and Use Case Diagrams to define system interactions for Admin and Non-Admin actors.</p>
+                    
+                    <div class="tech-tags" style="margin-top: 25px;">
+                        <span class="tech-tag">PHP Laravel</span>
+                        <span class="tech-tag">MySQL 8.0</span>
+                        <span class="tech-tag">RBAC</span>
+                        <span class="tech-tag">MVC Architecture</span>
+                        <span class="tech-tag">ERD</span>
+                        <span class="tech-tag">DFD</span>
+                        <span class="tech-tag">Use Case Diagrams</span>
+                    </div>
+                </div>
+                
+                <div class="internship-section">
+                    <h3><i class="fas fa-check-circle"></i> Quality Assurance & Legal</h3>
+                    
+                    <h4>Testing</h4>
+                    <p>Conducted formal User Acceptance Testing (UAT) and developed comprehensive test cases to ensure a robust, error-free system.</p>
+                    
+                    <h4>Intellectual Property</h4>
+                    <div class="highlight-box" onclick="showCopyright()" style="background: linear-gradient(135deg, rgba(196, 30, 58, 0.15), rgba(212, 175, 55, 0.1)); border-color: var(--gold); cursor: pointer; transition: var(--transition);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <i class="fas fa-award" style="color: var(--gold);"></i>
+                        <div class="highlight-content">
+                            <h5>myIPO Copyright Registered 🏆</h5>
+                            <p>Certificate No: <span onclick="showCopyright()" style="color: var(--gold); cursor: pointer; font-weight: 600; text-decoration: underline;">CRLY2025C13186</span> - Official copyright registration to protect the software as institutional assets</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Documentation</h4>
+                    <p>Authored the Software Requirements Specification (SRS) and a detailed User Manual to ensure long-term sustainability.</p>
+                </div>
+            </div>
+            
+            <!-- Tab Content: Graphic Design -->
+            <div id="tab-design" class="internship-tab-content">
+                <div class="internship-section">
+                    <h3><i class="fas fa-bullseye"></i> Strategic Visual Communication</h3>
+                    
+                    <h4>AENC Branding</h4>
+                    <p>Conceptualized and designed the logo for the ASEAN Entrepreneurship Network Council (AENC) to establish regional brand identity.</p>
+                    
+                    <h4>International Conference Logo</h4>
+                    <p>Designed the official logo for the International Conference on Entrepreneurship Research and Innovation (ICERI) 2026.</p>
+                    
+                    <h4>Executive Presentations</h4>
+                    <p>Developed high-impact presentation decks for the Vice Chancellor and strategic workshops regarding the 2026–2030 GERIC Roadmap.</p>
+                    
+                    <div class="tech-tags" style="margin-top: 25px;">
+                        <span class="tech-tag">Logo Design</span>
+                        <span class="tech-tag">Brand Identity</span>
+                        <span class="tech-tag">Presentation Design</span>
+                        <span class="tech-tag">Affinity Designer</span>
+                        <span class="tech-tag">Canva</span>
+                    </div>
+                </div>
+                
+                <div class="internship-section">
+                    <h3><i class="fas fa-globe"></i> Operational Support</h3>
+                    
+                    <h4>Digital Media Management</h4>
+                    <p>Managed the GERIC Facebook page and website front-end editing panels to disseminate research findings and organizational updates.</p>
+                    
+                    <h4>Physical Branding</h4>
+                    <p>Prepared and designed materials for the EKSA Board to support institutional workplace quality standards.</p>
+                    
+                    <div class="tech-tags" style="margin-top: 25px;">
+                        <span class="tech-tag">Social Media Management</span>
+                        <span class="tech-tag">Content Creation</span>
+                        <span class="tech-tag">Web Content Editing</span>
+                        <span class="tech-tag">Physical Branding</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Content: Evaluation -->
+            <div id="tab-evaluation" class="internship-tab-content">
+                <div class="internship-section">
+                    <h3><i class="fas fa-chart-line"></i> Supervisor Evaluation & Professional Growth</h3>
+                    <p>Throughout my 20-week industrial training, my performance was formally assessed across five core professional dimensions. I am proud to have received the maximum score (5/5) in every category, reflecting a consistent commitment to excellence and organizational growth.</p>
+                    
+                    <div class="highlight-box" style="cursor: pointer; transition: all 0.3s ease;" onclick="showEvaluationImage()" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 10px 30px rgba(196, 30, 58, 0.4)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 5px 20px rgba(196, 30, 58, 0.2)'">
+                        <i class="fas fa-file-alt"></i>
+                        <div class="highlight-content">
+                            <h5>📊 View Official Assessment Document</h5>
+                            <p>Click to view the complete evaluation form with detailed scoring breakdown</p>
+                        </div>
+                    </div>
+                    
+                    <h4><i class="fas fa-star"></i> Core Performance Ratings (5/5 Excellence)</h4>
+                    <ul>
+                        <li><strong>Responsibility & Work Ethic:</strong> Demonstrated high self-responsibility by managing complex routine activities, prioritizing critical system updates, and ensuring all deliverables were finalized for MyIPO registration.</li>
+                        <li><strong>Collaboration & Teamwork:</strong> Actively participated in departmental meetings, integrating stakeholder feedback into the development cycle and assisting team members with creative and technical tasks.</li>
+                        <li><strong>Creativity & Innovation:</strong> Recognized for the ability to organize complex ideas and information into effective communication tools, from system architecture to high-level branding assets.</li>
+                        <li><strong>Professionalism & Communication:</strong> Maintained a high standard of professional conduct and articulated technical solutions clearly to both technical and non-technical stakeholders.</li>
+                        <li><strong>Independent Learning:</strong> Demonstrated strong self-organizing skills, managing the transition between system development, technical documentation, and event coordination with minimal supervision.</li>
+                    </ul>
+                    
+                    <h4><i class="fas fa-quote-left"></i> Supervisor's Commendations</h4>
+                    <div class="highlight-box" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(196, 30, 58, 0.1)); border-left: 4px solid var(--gold);">
+                        <i class="fas fa-trophy" style="color: var(--gold);"></i>
+                        <div class="highlight-content">
+                            <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 10px;">"She has the potential to be a great employee. She is self-independent and has excellent ideas."</p>
+                            <p style="font-weight: 600; color: var(--gold);">— Prof. Madya Dr. Roslizawati Binti Che Aziz, Director of GERIC</p>
+                        </div>
+                    </div>
+                    
+                    <h4><i class="fas fa-cog"></i> Key Technical Feedback</h4>
+                    <p>During the final phases of the GIMS project, my supervisor highlighted several key strengths in my output:</p>
+                    <ul>
+                        <li><strong>Technical Excellence:</strong> My work was described as "well-designed" and the project updates were consistently labeled as "good effort".</li>
+                        <li><strong>Collaborative Mindset:</strong> Noted for providing "collaborative ideas" that improved the overall project outcome.</li>
+                        <li><strong>Proactive Problem Solving:</strong> Praised for taking the initiative to update the Software Requirements Specification (SRS) and Software Design Document (SDD) to ensure project sustainability.</li>
+                    </ul>
+                    
+                    <div class="highlight-box" style="background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1)); border-left: 4px solid #4caf50;">
+                        <i class="fas fa-lightbulb" style="color: #4caf50;"></i>
+                        <div class="highlight-content">
+                            <h5>Value-Added Contributions</h5>
+                            <p>This evaluation proves that my contributions were not just about "finishing tasks," but about adding real value to the GERIC research and innovation ecosystem. It serves as a verified record of my ability to work independently, lead technical projects, and thrive in a professional environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Content: Publications -->
+            <div id="tab-publications" class="internship-tab-content">
+                <div class="internship-section">
+                    <h3><i class="fas fa-edit"></i> Publication & Editorial Work</h3>
+                    
+                    <h4>e-Proceeding Editor</h4>
+                    <p>Served as editor and layout designer for the National Postgraduate Conference (NPC) 2026 e-Proceeding book, ensuring professional presentation of academic research papers.</p>
+                    
+                    <h4>Multi-Software Workflow</h4>
+                    <ul>
+                        <li><strong>Affinity Designer:</strong> Created custom borders and graphical elements</li>
+                        <li><strong>Canva:</strong> Typography design and visual layouts</li>
+                        <li><strong>Microsoft Word:</strong> Accessible templates for academic submissions</li>
+                    </ul>
+                    
+                    <h4>Institutional Books</h4>
+                    <p>Designed the AKKPT 2025 Book, transforming dense documentation into a professional, user-friendly format that enhances readability and visual appeal.</p>
+                    
+                    <div class="tech-tags" style="margin-top: 25px;">
+                        <span class="tech-tag">Editorial Design</span>
+                        <span class="tech-tag">Layout Design</span>
+                        <span class="tech-tag">Typography</span>
+                        <span class="tech-tag">Affinity Designer</span>
+                        <span class="tech-tag">Canva</span>
+                        <span class="tech-tag">Microsoft Word</span>
+                        <span class="tech-tag">Academic Publishing</span>
+                    </div>
+                </div>
+                
+                <div class="internship-section">
+                    <h3><i class="fas fa-file-alt"></i> Documentation Produced</h3>
+                    <ul>
+                        <li>Software Requirements Specification (SRS) for GIMS v12</li>
+                        <li>User Manual for GIMS v12</li>
+                        <li>NPC 2026 e-Proceeding Book Layout</li>
+                        <li>AKKPT 2025 Book Design</li>
+                        <li>GERIC Roadmap 2026-2030 Presentation Materials</li>
+                        <li>UAT Test Cases and Reports</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Certificate Modal -->
+    <div id="copyrightModal" class="modal" onclick="closeCopyrightModal(event)">
+        <span class="modal-close" onclick="closeCopyrightModal()">&times;</span>
+        <img class="modal-content" id="copyrightImage" src="images/certificate.png" alt="myIPO Copyright Certificate CRLY2025C13186">
+        <div class="modal-caption">
+            <h3>🏆 myIPO Copyright Certificate</h3>
+            <p>Certificate No: <strong>CRLY2025C13186</strong><br>
+            GERIC Integrated Management System (GIMS) v12<br>
+            Officially registered under Copyright Act 1987</p>
+        </div>
+    </div>
+
+    <!-- Evaluation Assessment Modal -->
+    <div id="evaluationModal" class="modal" onclick="closeEvaluationModal(event)">
+        <span class="modal-close" onclick="closeEvaluationModal()">&times;</span>
+        <img class="modal-content" id="evaluationImage" src="images/evaluation.png" alt="Supervisor Evaluation Assessment Form">
+        <div class="modal-caption">
+            <h3>📊 Supervisor Evaluation Assessment</h3>
+            <p><strong>Performance Rating:</strong> 5/5 Excellence in All Categories<br>
+            <strong>Supervisor:</strong> Prof. Madya Dr. Roslizawati Binti Che Aziz<br>
+            <strong>Period:</strong> September 2025 – January 2026</p>
         </div>
     </div>
 
@@ -3074,8 +3680,89 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeDescModal();
+                closeInternshipModal();
+                closeCopyrightModal();
+                closeEvaluationModal();
             }
         });
+
+        // Internship Modal Functions
+        function openInternshipModal() {
+            const modal = document.getElementById('internshipModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // Reset to overview tab
+            showInternshipTab('overview');
+        }
+
+        function closeInternshipModal() {
+            const modal = document.getElementById('internshipModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showInternshipTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.internship-tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.internship-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById('tab-' + tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.closest('.internship-tab').classList.add('active');
+        }
+
+        // Close internship modal when clicking outside content
+        document.getElementById('internshipModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeInternshipModal();
+            }
+        });
+
+        // Copyright Certificate Modal Functions
+        function showCopyright() {
+            const modal = document.getElementById('copyrightModal');
+            modal.classList.add('show');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCopyrightModal(event) {
+            if (event && event.target.id !== 'copyrightModal' && !event.target.classList.contains('modal-close')) {
+                return;
+            }
+            const modal = document.getElementById('copyrightModal');
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Evaluation Assessment Modal Functions
+        function showEvaluationImage() {
+            const modal = document.getElementById('evaluationModal');
+            modal.classList.add('show');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEvaluationModal(event) {
+            if (event && event.target.id !== 'evaluationModal' && !event.target.classList.contains('modal-close')) {
+                return;
+            }
+            const modal = document.getElementById('evaluationModal');
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
         // Three.js Floating Hearts Animation
         (function initThreeJS() {

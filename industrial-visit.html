@@ -350,6 +350,23 @@
         .view-visit i {
             margin-right: 8px;
         }
+        
+        /* Light mode overlay adjustments */
+        body.light-mode .visit-overlay {
+            background: linear-gradient(to top, rgba(254, 246, 246, 0.98), transparent);
+        }
+        
+        body.light-mode .visit-overlay h4 {
+            color: #2d1f1f;
+        }
+        
+        body.light-mode .visit-overlay p {
+            color: #5d4d4d;
+        }
+        
+        body.light-mode .view-visit {
+            color: var(--primary);
+        }
 
         /* Image Modal */
         .modal {
@@ -449,9 +466,10 @@
         }
 
         body.light-mode .modal-caption {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(196, 30, 58, 0.3);
+            background: rgba(254, 246, 246, 0.98);
+            border: 2px solid rgba(196, 30, 58, 0.4);
             color: var(--text);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         body.light-mode .modal-caption h3 {
@@ -459,7 +477,7 @@
         }
 
         body.light-mode .modal-caption p {
-            color: var(--text-dim);
+            color: #2d1f1f;
         }
         
         /* Responsive Design */
