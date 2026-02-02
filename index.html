@@ -773,10 +773,111 @@
         }
         
         /* Projects Section */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            color: var(--text);
+            border: var(--border);
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .filter-btn i {
+            font-size: 0.9rem;
+        }
+
+        .project-card {
+            transition: var(--transition), opacity 0.3s ease;
+        }
+
+        .project-card {
+            display: flex;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-card.hide-extra {
+            display: none;
+        }
+
+        .view-more-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .view-more-btn {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+            font-family: 'Raleway', sans-serif;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .view-more-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        .view-more-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .view-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
+        }
+
+        .projects-grid .project-card {
+            display: flex !important;
+        }
+
+        .projects-grid .project-card.hidden {
+            display: none !important;
+        }
+
+        .projects-grid .project-card.hide-extra {
+            display: none !important;
         }
         
         /* Graphic Design Section */
@@ -934,7 +1035,7 @@
 
         .modal-caption {
             position: absolute;
-            bottom: 20px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -1343,6 +1444,8 @@
             transition: var(--transition);
             position: relative;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
         }
         
         .project-card:hover {
@@ -1388,6 +1491,9 @@
         
         .project-content {
             padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
         .project-content h3 {
@@ -1402,6 +1508,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 15px;
+            margin-bottom: 25px;
         }
         
         .tag {
@@ -1420,7 +1527,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 25px;
+            margin-top: auto;
         }
         
         .project-link {
@@ -2446,9 +2553,29 @@
                 <h2>Project Portfolio</h2>
                 <p>Elegant digital solutions showcasing technical skill and creative vision</p>
             </div>
+            
+            <!-- Project Filter Buttons -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> All Projects
+                </button>
+                <button class="filter-btn" data-filter="development">
+                    <i class="fas fa-laptop-code"></i> System Development
+                </button>
+                <button class="filter-btn" data-filter="uiux">
+                    <i class="fas fa-paint-brush"></i> UI/UX Design
+                </button>
+                <button class="filter-btn" data-filter="datascience">
+                    <i class="fas fa-chart-line"></i> Data Science
+                </button>
+                <button class="filter-btn" data-filter="testing">
+                    <i class="fas fa-magnifying-glass"></i> Testing & QA
+                </button>
+            </div>
+            
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="project-card" data-category="development">
                     <div class="project-img">
                         <img src="images/slaces_logo.jpg" alt="Smootea Learning Access & Class Enrollment System Logo">
                     </div>
@@ -2478,7 +2605,7 @@
                 
                 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card" data-category="development">
                     <div class="project-img">
                         <img src="images/oods_logo.jpeg" alt="Outlet Ordering Distribution System Logo">
                     </div>
@@ -2506,7 +2633,7 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card" data-category="development">
                     <div class="project-img">
                         <img src="images/recipe_logo.jpg" alt="Recipe Sharing and Meal Planning Application Logo">
                     </div>
@@ -2531,7 +2658,7 @@
                 </div>
                 
                 <!-- Project 4 -->
-                <div class="project-card">
+                <div class="project-card" data-category="development">
                     <div class="project-img">
                         <img src="images/gims_logo.jpeg" alt="GERIC Integrated Management System Logo">
                     </div>
@@ -2560,7 +2687,7 @@
                 </div>
                 
                 <!-- Project 5 - ELMS -->
-                <div class="project-card">
+                <div class="project-card" data-category="development">
                     <div class="project-img">
                         <img src="images/elms_logo.jpeg" alt="Employee Leave Management System Logo">
                     </div>
@@ -2585,7 +2712,7 @@
                 </div>
                 
                 <!-- Project 6 -->
-                <div class="project-card">
+                <div class="project-card" data-category="uiux">
                     <div class="project-img">
                         <img src="images/levee_logo.jpeg" alt="Levée Fashion Recommendation App Logo">
                     </div>
@@ -2608,7 +2735,7 @@
                 </div>
                 
                 <!-- Project 6 -->
-                <div class="project-card">
+                <div class="project-card" data-category="uiux">
                     <div class="project-img">
                         <img src="images/spendity_logo.jpeg" alt="Spendity E-Wallet Application Logo">
                     </div>
@@ -2631,7 +2758,7 @@
                 </div>
                 
                 <!-- Project 7 -->
-                <div class="project-card">
+                <div class="project-card" data-category="development">
                     <div class="project-img">
                         <img src="images/ric_logo.jpeg" alt="Research Ideation Canvas Logo">
                     </div>
@@ -2656,7 +2783,7 @@
                 </div>
                 
                 <!-- Project 8 -->
-                <div class="project-card">
+                <div class="project-card" data-category="uiux">
                     <div class="project-img">
                         <img src="images/life_logo.jpg" alt="Life Spark Community Health Application Logo">
                     </div>
@@ -2679,7 +2806,7 @@
                 </div>
 
                 <!-- Project 9: Peer System Testing -->
-                <div class="project-card">
+                <div class="project-card" data-category="testing">
                     <div class="project-img">
                         <i class="fas fa-magnifying-glass" style="font-size: 5rem; color: var(--primary);"></i>
                     </div>
@@ -2701,7 +2828,7 @@
                 </div>
 
                 <!-- Project 10: Sentiment Analysis -->
-                <div class="project-card">
+                <div class="project-card" data-category="datascience">
                     <div class="project-img">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/800px-Roblox_player_icon_black.svg.png" alt="Sentiment Analysis of Roblox User Reviews" style="filter: brightness(0) invert(1); max-width: 120px;">
                     </div>
@@ -2725,7 +2852,7 @@
                 </div>
 
                 <!-- Project 11: FocusGrow -->
-                <div class="project-card">
+                <div class="project-card" data-category="uiux">
                     <div class="project-img">
                         <i class="fas fa-clock" style="font-size: 4rem; color: var(--primary);"></i>
                     </div>
@@ -2747,6 +2874,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- View More Button -->
+            <div class="view-more-container">
+                <button id="viewMoreBtn" class="view-more-btn">
+                    <i class="fas fa-chevron-down"></i> View More Projects
+                </button>
             </div>
         </div>
     </section>
@@ -4101,6 +4235,135 @@
             // Start animation
             animate();
         })();
+        
+        // Project Filter System
+        function initProjectFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    // Reset all cards - remove all filter classes
+                    projectCards.forEach(card => {
+                        card.classList.remove('hidden', 'hide-extra');
+                    });
+
+                    if (filter === 'all') {
+                        // Show only first 6 projects for "All Projects"
+                        projectCards.forEach((card, index) => {
+                            if (index >= 6) {
+                                card.classList.add('hide-extra');
+                            }
+                        });
+                        checkViewMoreVisibility();
+                    } else {
+                        // Show all projects in the filtered category
+                        projectCards.forEach(card => {
+                            const cardCategory = card.getAttribute('data-category');
+                            if (cardCategory !== filter) {
+                                card.classList.add('hidden');
+                            }
+                        });
+                        hideViewMoreButton();
+                    }
+
+                    resetViewMoreState();
+                });
+            });
+        }
+
+        // View More Projects System
+        function initViewMore() {
+            const viewMoreBtn = document.getElementById('viewMoreBtn');
+            const projectCards = document.querySelectorAll('.projects-grid .project-card');
+            const projectsSection = document.getElementById('projects');
+
+            viewMoreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isExpanded = viewMoreBtn.classList.contains('expanded');
+
+                if (isExpanded) {
+                    // Show less - hide projects after 6th
+                    projectCards.forEach((card, index) => {
+                        if (index >= 6) {
+                            card.classList.add('hide-extra');
+                        }
+                    });
+                    viewMoreBtn.classList.remove('expanded');
+                    viewMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> View More Projects';
+                    
+                    // Scroll to projects section
+                    setTimeout(() => {
+                        projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                } else {
+                    // Show all - remove hide-extra class
+                    projectCards.forEach(card => {
+                        card.classList.remove('hide-extra');
+                    });
+                    viewMoreBtn.classList.add('expanded');
+                    viewMoreBtn.innerHTML = '<i class="fas fa-chevron-up"></i> View Less Projects';
+                }
+            });
+        }
+
+        function resetViewMoreState() {
+            const viewMoreBtn = document.getElementById('viewMoreBtn');
+            viewMoreBtn.classList.remove('expanded');
+            viewMoreBtn.innerHTML = '<i class="fas fa-chevron-down"></i> View More Projects';
+        }
+
+        function checkViewMoreVisibility() {
+            const viewMoreContainer = document.querySelector('.view-more-container');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            // Show button only for "All Projects" if there are more than 6 total projects
+            if (projectCards.length > 6) {
+                viewMoreContainer.style.display = 'block';
+            } else {
+                viewMoreContainer.style.display = 'none';
+            }
+        }
+
+        function hideViewMoreButton() {
+            const viewMoreContainer = document.querySelector('.view-more-container');
+            viewMoreContainer.style.display = 'none';
+        }
+
+        function showFilteredProjects() {
+            // Not needed anymore - simplified logic
+        }
+
+        // Initialize project filters and view more when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.projects-grid .project-card');
+            console.log('Found project cards:', projectCards.length);
+            
+            // Reset all cards first
+            projectCards.forEach((card, index) => {
+                card.classList.remove('hidden', 'hide-extra');
+                console.log(`Card ${index + 1}:`, card.querySelector('h3').textContent);
+            });
+            
+            // Initially show only first 6 projects for "All Projects" view
+            projectCards.forEach((card, index) => {
+                if (index >= 6) {
+                    card.classList.add('hide-extra');
+                    console.log(`Hiding card ${index + 1}`);
+                }
+            });
+            
+            initProjectFilters();
+            initViewMore();
+            checkViewMoreVisibility();
+        });
     </script>
 </body>
 </html>
