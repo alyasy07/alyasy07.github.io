@@ -40,7 +40,7 @@ Portfolio/
 ## 🚀 Deployment
 
 This portfolio is deployed on GitHub Pages and accessible at:
-**https://[your-username].github.io**
+**https://alyasy07.github.io**
 
 ## 📫 Contact
 
