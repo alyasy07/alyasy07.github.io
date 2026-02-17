@@ -2504,6 +2504,7 @@
                         <span class="skill-tag"><i class="fas fa-server"></i>phpMyAdmin</span>
                         <span class="skill-tag"><i class="fas fa-database"></i>Oracle SQL</span>
                         <span class="skill-tag"><i class="fas fa-leaf"></i>MongoDB</span>
+                        <span class="skill-tag"><i class="fas fa-bolt"></i>Supabase</span>
                         <span class="skill-tag"><i class="fab fa-github"></i>GitHub</span>
                         <span class="skill-tag"><i class="fas fa-code"></i>VS Code</span>
                         <span class="skill-tag"><i class="fas fa-tasks"></i>Trello</span>
@@ -2538,13 +2539,16 @@
                             <i class="fas fa-robot"></i>
                         </div>
                         <div>
-                            <h3 class="category-title">AI & Analytics</h3>
-                            <p class="category-subtitle">Machine Learning & Data</p>
+                            <h3 class="category-title">AI & Automation</h3>
+                            <p class="category-subtitle">Machine Learning, SEO & Workflows</p>
                         </div>
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag"><i class="fas fa-brain"></i>Weka</span>
                         <span class="skill-tag"><i class="fas fa-microchip"></i>AI Studio</span>
+                        <span class="skill-tag"><i class="fas fa-project-diagram"></i>n8n</span>
+                        <span class="skill-tag"><i class="fas fa-robot"></i>LLM Integration</span>
+                        <span class="skill-tag"><i class="fas fa-search-dollar"></i>SEO Automation</span>
                     </div>
                 </div>
 
@@ -2640,19 +2644,42 @@
                 <button class="filter-btn" data-filter="uiux">
                     <i class="fas fa-paint-brush"></i> UI/UX Design
                 </button>
-                <button class="filter-btn" data-filter="datascience">
-                    <i class="fas fa-chart-line"></i> Data Science
-                </button>
-                <button class="filter-btn" data-filter="testing">
-                    <i class="fas fa-magnifying-glass"></i> Testing & QA
+                <button class="filter-btn" data-filter="others">
+                    <i class="fas fa-layer-group"></i> Others
                 </button>
             </div>
 
             <div class="projects-grid">
+                <!-- Project SEO Automation -->
+                <!-- Project SEO Automation -->
+                <div class="project-card" data-category="others">
+                    <div class="project-img">
+                        <img src="images/Mockup 20.png" alt="SEO Automation Pipeline">
+                    </div>
+                    <div class="project-content">
+                        <h3 onclick="openDescModal('seo_automation')" style="cursor: pointer; transition: color 0.3s;"
+                            onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text)'">
+                            SEO Automation Pipeline (n8n)</h3>
+                        <p>End-to-end SEO workflow using n8n, SerpApi, AI analysis, and Supabase. Automates keyword
+                            research and competitor analysis.</p>
+                        <div class="project-tags">
+                            <span class="tag">n8n</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">AI/LLM</span>
+                            <span class="tag">SerpApi</span>
+                            <span class="tag">Supabase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.youtube.com/watch?v=D-MVw7Mrbfc" target="_blank" class="project-link">
+                                <i class="fab fa-youtube"></i> Watch Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Project AlyaXP -->
                 <div class="project-card" data-category="uiux">
                     <div class="project-img">
-                        <img src="images/WindowsXP.png" alt="AlyaXP Portfolio Windows">
+                        <img src="images/Mockup Ribbon 8.png" alt="AlyaXP Portfolio Windows">
                     </div>
                     <div class="project-content">
                         <h3 onclick="openDescModal('alyaxp')" style="cursor: pointer; transition: color 0.3s;"
@@ -2949,9 +2976,9 @@
                 </div>
 
                 <!-- Project 9: Peer System Testing -->
-                <div class="project-card" data-category="testing">
+                <div class="project-card" data-category="others">
                     <div class="project-img">
-                        <i class="fas fa-magnifying-glass" style="font-size: 5rem; color: var(--primary);"></i>
+                        <img src="images/Mockup 30.png" alt="Peer System Testing">
                     </div>
                     <div class="project-content">
                         <h3 onclick="openDescModal('testing')" style="cursor: pointer; transition: color 0.3s;"
@@ -2976,11 +3003,9 @@
                 </div>
 
                 <!-- Project 10: Sentiment Analysis -->
-                <div class="project-card" data-category="datascience">
+                <div class="project-card" data-category="others">
                     <div class="project-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/800px-Roblox_player_icon_black.svg.png"
-                            alt="Sentiment Analysis of Roblox User Reviews"
-                            style="filter: brightness(0) invert(1); max-width: 120px;">
+                        <img src="images/Mockup 18.png" alt="Sentiment Analysis of Roblox User Reviews">
                     </div>
                     <div class="project-content">
                         <h3 onclick="openDescModal('sentiment')" style="cursor: pointer; transition: color 0.3s;"
@@ -3009,7 +3034,7 @@
                 <!-- Project 11: FocusGrow -->
                 <div class="project-card" data-category="uiux">
                     <div class="project-img">
-                        <i class="fas fa-clock" style="font-size: 4rem; color: var(--primary);"></i>
+                        <img src="images/Mockup 14.png" alt="FocusGrow">
                     </div>
                     <div class="project-content">
                         <h3 onclick="openDescModal('focusgrow')" style="cursor: pointer; transition: color 0.3s;"
@@ -4175,6 +4200,10 @@
                 title: "Smootea Learning Access & Class Enrollment System (SLACES)",
                 description: "Problem & Solution:\nTo solve the issue of inefficient class management, manual tracking errors, and poor security caused by relying on static websites and disjointed third-party platforms (like Facebook and WhatsApp), I developed the Smootea Learning Access & Class Enrollment System (SLACES) is a centralized, dynamic web-based system that automates student enrollment using a unique invoice code and provides dedicated, role-based access for both students and administrators.\n\nSystem Analysis:\nThe development followed a strict Software Development Life Cycle (SDLC) process, specifically utilizing the Waterfall Model due to its systematic, step-by-step methodology, which is ideal for projects with a well-defined scope and minimal projected changes. I began with thorough requirements gathering and analysis, which produced the Software Requirements Specification (SRS) document. This was followed by the System Design Phase, where the logical database architecture was created (Database Design and Schema) and documented in the Software Design Document (SDD). The project then moved to implementation, and the Waterfall Model's comprehensive nature ensured extensive documentation and focus on integration and acceptance testing before deployment.\n\nKey Technical Features:\n• Role-Based Access Control (RBAC): The system features distinct dashboards and privileges for two key user roles: Students (to enroll in classes, access materials, and track their progress) and Administrators (for class and invoice management).\n• Automated Enrollment and Validation: Student enrollment is instant and automated by requiring the user to input a unique invoice code, which the system automatically validates against the database to grant class access without manual authorization from the administrator.\n• Centralized Content Management: Administrators can easily perform CRUD (Create, Read, Update, Delete) operations for class records and manage learning materials, which supports the upload of files like PDF and video for dynamic student access.\n• Three-Layer MVC Architecture: The system is built on a modular, maintainable Model-View-Controller (MVC) architectural pattern using the Laravel framework, structured with three layers (User Interface, Domain, Data Access) to ensure scalability.\n• Technology Stack: The core technologies used are PHP (via the Laravel framework) for the web application and MySQL version 8.0 as the relational database management system.\n\nFor a detailed look at the system architecture and testing procedures, please refer to the technical documentation attached below.\n\n<div style='margin-top: 20px; display: flex; flex-direction: column; gap: 10px;'><a href='https://github.com/alyasy07/documentation/blob/main/Software%20Requirements%20for%20SLACES.pdf' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-file-pdf' style='margin-right: 8px;'></i> Software Requirements Specification (SRS)</a><a href='https://github.com/alyasy07/documentation/blob/main/Software%20Design%20Document.pdf' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-file-pdf' style='margin-right: 8px;'></i> Software Design Document (SDD)</a><a href='https://github.com/alyasy07/documentation/blob/main/FINAL%20REPORT.%20NUR%20SYAFIKA%20ALYA%20BINTI%20MOHD%20ZAMRI%20AZHAR.CDCS2666C.pdf' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-file-pdf' style='margin-right: 8px;'></i> Final Report / Thesis</a></div>"
             },
+            seo_automation: {
+                title: "SEO Automation Pipeline (n8n)",
+                description: "<strong>Objective:</strong> Build an end-to-end n8n workflow that accepts a target keyword from a custom web interface, retrieves live search data using SerpApi, processes the results using an AI model to extract key SEO metrics, stores the data in Supabase, and returns the analysis to the frontend for display.\n\n<strong>Key Features:</strong>\n• <strong>Frontend & Input:</strong> Simple web interface (HTML/JS) for keyword submission.\n• <strong>Data Retrieval:</strong> Automated SerpApi querying via n8n HTTP Request nodes.\n• <strong>Data Transformation:</strong> JavaScript Code Node to clean and structure raw JSON data.\n• <strong>AI Analysis:</strong> Integration with AI/LLM nodes to generate summaries, search intent, difficulty scores, and competitor lists.\n• <strong>Database Storage:</strong> Secure storage of SEO reports in Supabase.\n• <strong>Error Handling:</strong> Robust error paths and fallback mechanisms.\n\n<div style='margin-top: 20px; display: flex; flex-direction: column; gap: 10px;'><a href='https://www.youtube.com/watch?v=D-MVw7Mrbfc' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fab fa-youtube' style='margin-right: 8px;'></i> Watch Demo</a></div>"
+            },
             oods: {
                 title: "Outlet Ordering Distribution System (OODS)",
                 description: "Problem & Solution:\nTo solve the issue of inefficiencies and inaccuracies in stock management that arose from the time-consuming process of manually filling out stock request forms and submitting them via messaging applications like WhatsApp, I developed the Outlet Ordering Distribution System (OODS) is an innovative, automated, and standardized platform that centralizes the stock ordering procedure and enables real-time management and tracking for both Headquarters (HQ) and outlet supervisors.\n\nSystem Analysis:\nThe development of the OODS followed a strict, systematic process, adhering to the principles of a formal System Development Life Cycle (SDLC). The project began with a thorough requirements definition, which was documented in the Software Requirements Specification (SRS). Subsequently, the system's architecture, design rationale, and data design were meticulously planned and documented in the Software Design Document (SDD). The systematic approach ensured the creation of a clear framework for implementation, with built-in provisions for rigorous testing against defined non-functional requirements to guarantee data integrity, consistency, and operational effectiveness.\n\nKey Technical Features:\n• Three-Layer Architectural Model: The system is based on a modular three-layer architecture, separating its components into the User Interface Layer, the Domain Layer, and the Data Access Layer to ensure high modularity, maintainability, and scalability.\n• Role-Based Access Control (RBAC): The system features distinct interfaces for two user classes: HQ Admin (high privileges for stock management, approval, and delivery arrangement) and Outlet Supervisor (limited access for requesting and tracking stocks).\n• Full Stock Control: HQ Admins have the ability to perform CRUD (Create, Read, Update, Delete) operations on stock items, ensuring efficient, centralized inventory management.\n• Automated Ordering and Tracking: Outlet supervisors can request stocks by adding items to a cart and proceeding to checkout. The system also allows both users to monitor the status of orders (pending, rejected, approved) and track the delivery status.\n• Database Management: The Outlet Ordering Distribution System employs MySQL version 8.0 as its Relational Database Management System (RDBMS) to store and manage all application data.\n\nFor a detailed look at the system architecture and testing procedures, please refer to the technical documentation attached below.\n\n<div style='margin-top: 20px; display: flex; flex-direction: column; gap: 10px;'><a href='https://github.com/alyasy07/OODSV30/blob/main/UPDATED_SRS_CDCS2664D_FIVERS%20(1).pdf' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-file-pdf' style='margin-right: 8px;'></i> Software Requirements Specification (SRS)</a><a href='https://github.com/alyasy07/OODSV30/blob/main/ISP551%20SDD%20(FIVERS).pdf' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-file-pdf' style='margin-right: 8px;'></i> Software Design Document (SDD)</a></div>"
@@ -4221,7 +4250,7 @@
             },
             alyaxp: {
                 title: "AlyaXP (Portfolio Windows)",
-                description: "Project Overview:\nAlyaXP is a high-fidelity personal portfolio website designed to simulate a desktop operating system environment. Built with React and Vite, it offers a unique, interactive user experience where visitors can navigate through 'windows,' manage tasks via a functional taskbar, and explore my projects and skills as if they were using a real desktop computer. This project emphasizes creativity, complex state management, and immersive UI design.\n\nWhat I Built:\nA comprehensive desktop simulation web app demonstrating:\n• Interactive Window Manager: Custom system for opening, closing, minimizing, maximizing, and focusing windows.\n• Draggable Interface: Windows can be moved around the desktop using react-draggable.\n• OS Simulation Features:\n   • Functional Taskbar with clock and running app indicators.\n   • Start Menu with navigation items.\n   • Desktop Icons with double-click functionality.\n   • Boot Screen and Login Screen sequences for initial user engagement.\n• Responsive Design: Adapts the desktop metaphor for different screen sizes (Mobile/Desktop).\n• Smooth Animations: Utilized framer-motion for window transitions, start menu toggling, and boot sequences.\n• Modals & Alerts: Custom confirmation dialogs for external links.\n\nTech Stack (Repository Language Composition):\n• JavaScript (React) - 65% (Core interactive logic, Component architecture, Hooks)\n• CSS - 30% (Custom styling, Glassmorphism effects, Responsive Layouts)\n• HTML - 5% (Semantic structure)\n• Libraries: Vite, Framer Motion, React Draggable, Lucide React\n\nWhat I Practiced & Learned:\n• Architecting a scalable React application with multiple interacting components (Taskbar <-> WindowManager <-> Desktop).\n• Managing complex global state (e.g., z-index stacking order, active window tracking) without a heavy state management library.\n• Implementing advanced CSS techniques for 'desktop-like' positioning (absolute, fixed, flexbox) and theming.\n• Handling browser events for drag-and-drop and outside clicks.\n• Optimizing performance in a DOM-heavy application.\n• Seamless integration of third-party libraries for specific UI behaviors (animations, dragging).\n\nWhy It's in My Portfolio:\n• Represents my ability to build complex, non-traditional web interfaces.\n• Showcasing front-end proficiency: transforming a standard web page into a fully functional application experience.\n• Acts as the container for my entire body of work, making the portfolio itself a standout project.\n• Demonstrates strong attention to detail in UI/UX (hover states, transitions, consistent design language).\n\nProject Status:\nThis project is currently in active development (Version 1). It serves as my primary portfolio, constantly evolving with new 'apps' (features) and polished aesthetics.\n\n<div style='margin-top: 20px; display: flex; flex-direction: column; gap: 10px;'><a href='https://alya-xp.vercel.app/' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-desktop' style='margin-right: 8px;'></i> View Website</a></div>"
+                description: "Project Overview:\nAlyaXP is a high-fidelity personal portfolio website designed to simulate a desktop operating system environment. Built with React and Vite, it offers a unique, interactive user experience where visitors can navigate through 'windows,' manage tasks via a functional taskbar, and explore my projects and skills as if they were using a real desktop computer. This project emphasizes creativity, complex state management, and immersive UI design.\n\nWhat I Built:\nA comprehensive desktop simulation web app demonstrating:\n• Interactive Window Manager: Custom system for opening, closing, minimizing, maximizing, and focusing windows.\n• Draggable Interface: Windows can be moved around the desktop using react-draggable.\n• OS Simulation Features:\n   • Functional Taskbar with clock and running app indicators.\n   • Start Menu with navigation items.\n   • Desktop Icons with double-click functionality.\n   • Boot Screen and Login Screen sequences for initial user engagement.\n• Responsive Design: Adapts the desktop metaphor for different screen sizes (Mobile/Desktop).\n• Smooth Animations: Utilized framer-motion for window transitions, start menu toggling, and boot sequences.\n• Modals & Alerts: Custom confirmation dialogs for external links.\n\nTech Stack (Repository Language Composition):\n• JavaScript (React) - 65% (Core interactive logic, Component architecture, Hooks)\n• CSS - 30% (Custom styling, Glassmorphism effects, Responsive Layouts)\n• HTML - 5% (Semantic structure)\n• Libraries: Vite, Framer Motion, React Draggable, Lucide React\n\nWhat I Practiced & Learned:\n• Architecting a scalable React application with multiple interacting components (Taskbar <-> WindowManager <-> Desktop).\n• Managing complex global state (e.g., z-index stacking order, active window tracking) without a heavy state management library.\n• Implementing advanced CSS techniques for 'desktop-like' positioning (absolute, fixed, flexbox) and theming.\n• Handling browser events for drag-and-drop and outside clicks.\n• Optimizing performance in a DOM-heavy application.\n• Seamless integration of third-party libraries for specific UI behaviors (animations, dragging).\n\nWhy It's in My Portfolio:\n• Represents my ability to build complex, non-traditional web interfaces.\n• Showcasing front-end proficiency: transforming a standard web page into a fully functional application experience.\n• Acts as the container for my entire body of work, making the portfolio itself a standout project.\n• Demonstrates strong attention to detail in UI/UX (hover states, transitions, consistent design language).\n\nProject Status:\nThis project is currently in active development (Version 1). It serves as my second portfolio, constantly evolving with new 'apps' (features) and polished aesthetics.\n\n<div style='margin-top: 20px; display: flex; flex-direction: column; gap: 10px;'><a href='https://alya-xp.vercel.app/' target='_blank' style='display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: #ffffff; text-decoration: none; font-size: 0.85rem; padding: 12px 20px; border-radius: 6px; transition: all 0.3s; font-weight: 500;'><i class='fas fa-desktop' style='margin-right: 8px;'></i> View Website</a></div>"
             }
         };
 
